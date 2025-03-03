@@ -10,11 +10,8 @@ use Filament\Actions;
 use Filament\AvatarProviders\UiAvatarsProvider;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
-use Filament\Tables\Actions\ExportAction;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Ysfkaya\FilamentPhoneInput\PhoneInputNumberType;
 
 class ListUsers extends ListRecords
 {
@@ -27,12 +24,13 @@ class ListUsers extends ListRecords
         ];
     }
 
-    public function table(Table $table): Table
+    public function table(Tables\Table $table): Tables\Table
     {
         return $table
             ->headerActions([
-                ExportAction::make()
+                Tables\Actions\ExportAction::make()
                     ->exporter(UserExporter::class)
+                    ->icon('heroicon-o-arrow-up-tray')
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('id')
@@ -61,7 +59,7 @@ class ListUsers extends ListRecords
                     ->searchable()
                     ->sortable()
                     ->toggleable()
-                    ->displayFormat(PhoneInputNumberType::INTERNATIONAL),
+                    ->displayFormat(\Ysfkaya\FilamentPhoneInput\PhoneInputNumberType::INTERNATIONAL),
                 Tables\Columns\TextColumn::make('userProfile.birthdate')
                     ->label('Birthdate')
                     ->date(config('filament.date_format'))

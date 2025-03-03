@@ -2,12 +2,7 @@
 
 namespace App\Filament\Resources\ApiIntegrationResource\Traits;
 
-use App\Enums\MediaCollectionType;
-use App\Jobs\ResetPassword;
-use BezhanSalleh\FilamentShield\Support\Utils;
 use Filament\Forms;
-use Filament\Notifications\Notification;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 trait HasForm
@@ -31,6 +26,9 @@ trait HasForm
                         ->label('Credentials')
                         ->required()
                         ->columnSpanFull(),
+                    Forms\Components\Toggle::make('is_active')
+                        ->default(true)
+                        ->required(),
                 ])->columns(2)
         ];
     } 

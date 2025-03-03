@@ -17,6 +17,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 - **API Keys Management:** Enable secure storage and management of API keys and credentials, facilitating seamless integration with internal and third-party APIs.
 - **User Roles & Permissions:** Implement role-based access control (RBAC) to ensure users have the right level of access.
 - **Export Reports:** Generate and export reports in Excel (.xlsx) or CSV formats for data analysis and record-keeping.
+- **Page Builder:** A drag-and-drop interface that allows users to create, customize, and manage pages effortlessly. Supports various content blocks, real-time preview, and responsive design to ensure a seamless experience across devices.
 
 **Why Choose Filament One?**
 - **Time-Saving:** Get started quickly with a ready-to-use admin panel instead of building from scratch.
@@ -32,6 +33,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 [Generate Filament Shield Permissions](#generate-filament-shield-permissions)<br/>
 [Create Administrator Account](#create-admin-account)<br/>
 [Generate Test Data](#generate-test-data)<br/>
+[Initialize The Application](#initialize-the-application)<br/>
 [Plugins Used](#plugins-used)<br/>
 [Acknowledgments](#acknowledgments)<br/>
 [Support](#support)
@@ -44,10 +46,11 @@ Create a new project using this command:
 composer create-project jeddsaliba/filament-one
 ```
 
-Install the `dependencies` by running:
+Install the `dependencies` by running the following commands:
 
 ```bash
 composer install
+npm install
 ```
 
 <a name="environment"></a>
@@ -61,7 +64,7 @@ cp .env.example .env
 Configure the `APP_URL` in your `.env` file:
 
 ```bash
-APP_URL=https://filament-one.dev
+APP_URL=http://localhost
 ```
 
 Configure the `MySQL` connection in your `.env` file:
@@ -82,6 +85,18 @@ DB_PORT=5432
 DB_DATABASE=
 DB_USERNAME=
 DB_PASSWORD=
+```
+
+Configure the `Mailer` in your `.env` file:
+```
+MAIL_MAILER=smtp
+MAIL_SCHEME=
+MAIL_HOST=
+MAIL_PORT=2525
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_FROM_ADDRESS=
+MAIL_FROM_NAME=
 ```
 
 <a name="database"></a>
@@ -116,12 +131,27 @@ You may also run this command in order to populate the database with test data:
 php artisan db:seed
 ```
 
+<a name="initialize-the-application"></a>
+## Initialize The Application
+In order to start the application, use any of the following commands:
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+php artisan serve
+```
+
 <a name="plugins-used"></a>
 ## Plugins Used
 These are [Filament Plugins](https://filamentphp.com/plugins) use for this project.
 
 | **Plugin**                                                                                          | **Author**                                              |
 | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
+| [Ace Editor](https://github.com/riodwanto/filament-ace-editor)                                      | [Rio Dewanto P](https://github.com/riodwanto)           |
 | [ActivityLog](https://github.com/rmsramos/activitylog)                                              | [Rômulo Ramos](https://github.com/rmsramos)             |
 | [Breezy](https://github.com/jeffgreco13/filament-breezy)                                            | [Jeff Greco](https://github.com/jeffgreco13)            |
 | [Comments](https://github.com/parallax/filament-comments)                                           | [Parallax](https://github.com/parallax)                 |
@@ -129,6 +159,7 @@ These are [Filament Plugins](https://filamentphp.com/plugins) use for this proje
 | [Filament Spatie Media Library](https://github.com/filamentphp/spatie-laravel-media-library-plugin) | [Filament Official](https://github.com/filamentphp)     |
 | [Filament Spatie Settings](https://github.com/filamentphp/spatie-laravel-settings-plugin)           | [Filament Official](https://github.com/filamentphp)     |
 | [Global Search Modal](https://github.com/CharrafiMed/global-search-modal)                           | [Mohamed Charrafi](https://github.com/CharrafiMed)      |
+| [Grapes JS](https://github.com/dotswan/filament-grapesjs-v3)                                        | [dotSwan](https://github.com/dotswan)                   |
 | [Impersonate](https://github.com/stechstudio/filament-impersonate)                                  | [Signature Tech Studio](https://github.com/stechstudio) |
 | [Phone Input](https://github.com/ysfkaya/filament-phone-input)                                      | [Yusuf Kaya](https://github.com/ysfkaya)                |
 | [Shield](https://github.com/bezhanSalleh/filament-shield)                                           | [Bezhan Salleh](https://github.com/bezhansalleh)        |

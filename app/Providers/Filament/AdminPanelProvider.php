@@ -89,7 +89,7 @@ class AdminPanelProvider extends PanelProvider
                         // UserProfileComponent::class,
                     ])
                     ->enableTwoFactorAuthentication(
-                        force: true, // force the user to enable 2FA before they can use the application (default = false)
+                        force: false, // force the user to enable 2FA before they can use the application (default = false)
                     )
                     ->avatarUploadComponent(function (FileUpload $fileUpload) {
                         return $fileUpload
@@ -122,6 +122,8 @@ class AdminPanelProvider extends PanelProvider
                 \ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin::make(),
             ])
             ->navigationGroups([
+                NavigationGroup::make(NavGroup::CMS->value)
+                    ->icon(NavGroup::CMS->getIcon()),
                 NavigationGroup::make(NavGroup::UM->value)
                     ->icon(NavGroup::UM->getIcon()),
                 NavigationGroup::make(NavGroup::ST->value)

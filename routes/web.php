@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::domain(config('app.url'))->group(function () {
+    Route::get('/{slug}', App\Http\Controllers\PageBuilderController::class);
 });

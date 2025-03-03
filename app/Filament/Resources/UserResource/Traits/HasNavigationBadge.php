@@ -8,6 +8,6 @@ trait HasNavigationBadge
 {
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::count();
+        return static::getModel()::whereNotIn('id', [Auth::id()])->count();
     } 
 }

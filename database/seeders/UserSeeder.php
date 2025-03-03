@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(15)->has(UserProfile::factory())->create()->each(function ($user) {
+        User::factory()->count(25)->has(UserProfile::factory())->create()->each(function ($user) {
             Utils::createPanelUserRole();
             $user->assignRole(Utils::getPanelUserRoleName());
         });

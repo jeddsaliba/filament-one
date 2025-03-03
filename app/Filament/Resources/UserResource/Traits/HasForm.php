@@ -54,6 +54,7 @@ trait HasForm
                     Forms\Components\DatePicker::make('birthdate'),
                 ]),
             Forms\Components\Select::make('roles')
+                ->required()
                 ->relationship('roles', 'name')
                 ->multiple()
                 ->preload()
@@ -68,7 +69,15 @@ trait HasForm
                 ->password()
                 ->confirmed()
                 ->revealable()
-                ->required(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord),
+                ->required(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord)
+                ->hintActions([
+                    Forms\Components\Actions\Action::make('generate_password')
+                        ->action(function (Forms\Set $set) {
+                            $password = Str::random();
+                            $set('password', $password);
+                            $set('password_confirmation', $password);
+                        })
+                ]),
             Forms\Components\TextInput::make('password_confirmation')
                 ->password()
                 ->revealable()

@@ -5,7 +5,6 @@ namespace App\Filament\Resources\ApiIntegrationResource\Pages;
 use App\Filament\Resources\ApiIntegrationResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Database\Eloquent\Model;
 
 class EditApiIntegration extends EditRecord
 {

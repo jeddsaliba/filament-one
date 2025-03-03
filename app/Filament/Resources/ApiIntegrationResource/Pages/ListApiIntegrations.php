@@ -2,11 +2,11 @@
 
 namespace App\Filament\Resources\ApiIntegrationResource\Pages;
 
+use App\Filament\Exports\ApiIntegrationExporter;
 use App\Filament\Resources\ApiIntegrationResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables;
-use Filament\Tables\Table;
 
 class ListApiIntegrations extends ListRecords
 {
@@ -19,9 +19,14 @@ class ListApiIntegrations extends ListRecords
         ];
     }
 
-    public function table(Table $table): Table
+    public function table(Tables\Table $table): Tables\Table
     {
         return $table
+            ->headerActions([
+                Tables\Actions\ExportAction::make()
+                    ->exporter(ApiIntegrationExporter::class)
+                    ->icon('heroicon-o-arrow-up-tray')
+            ])
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->label('ID')
@@ -33,6 +38,9 @@ class ListApiIntegrations extends ListRecords
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->label('Active')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(config('filament.date_time_format'))
                     ->sortable()
