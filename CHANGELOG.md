@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2025-03-03
+### Fixed
+- **User Onboarding Email:** Send user credentials via email upon account creation.
+
 ## [1.1.0] - 2025-03-03
 ### Added
 - **Page Builder:** Introduced a drag-and-drop Page Builder, allowing users to create and customize pages effortlessly.
