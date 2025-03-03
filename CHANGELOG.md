@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2025-03-03
+### Changed
+- Updated dependencies.
+
+---
+
 ## [1.1.1] - 2025-03-03
 ### Fixed
 - **User Onboarding Email:** Send user credentials via email upon account creation.
+
+---
 
 ## [1.1.0] - 2025-03-03
 ### Added
