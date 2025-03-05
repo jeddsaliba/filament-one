@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2025-03-05
+### Added
+- **Easy Footer:** A simple plugin to display a customizable footer in your Filament application.
+- **Date Range Filter and Picker:** This package uses the daterangepicker library to filter a date within a range.
+
+---
+
 ## [1.1.2] - 2025-03-03
 ### Changed
 - Updated dependencies.

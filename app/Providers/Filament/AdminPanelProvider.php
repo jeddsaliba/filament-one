@@ -75,6 +75,14 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
                 \CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin::make(),
+                \Devonab\FilamentEasyFooter\EasyFooterPlugin::make()
+                    ->withGithub()
+                    ->withLogo(
+                        'https://filamentphp.com/favicon/favicon-32x32.png', // Path to logo
+                        'https://filamentphp.com',                               // URL for logo link (optional)
+                        'Powered by Filament',                                // Text to display (optional)
+                    )
+                    ->withBorder(),
                 \Jeffgreco13\FilamentBreezy\BreezyCore::make()
                     ->myProfile(
                         shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)

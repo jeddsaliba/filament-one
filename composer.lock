@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6ab9895e9770504f0178212c995dc9d",
+    "content-hash": "8f39be16e620b1b0529706d32c08e22b",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -776,6 +776,85 @@
             "time": "2024-08-09T14:30:48+00:00"
         },
         {
+            "name": "devonab/filament-easy-footer",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Devonab/filament-easy-footer.git",
+                "reference": "8f4ab1fd7524c99417f3d934d1274f1cae0ac79f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Devonab/filament-easy-footer/zipball/8f4ab1fd7524c99417f3d934d1274f1cae0ac79f",
+                "reference": "8f4ab1fd7524c99417f3d934d1274f1cae0ac79f",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.8",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.1",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentEasyFooter": "Devonab\\FilamentEasyFooter\\Facades\\EasyFooter"
+                    },
+                    "providers": [
+                        "Devonab\\FilamentEasyFooter\\EasyFooterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devonab\\FilamentEasyFooter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Devonab",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple plugin to display a customizable footer in your filament application!",
+            "homepage": "https://github.com/devonab/filament-easy-footer",
+            "keywords": [
+                "Devonab",
+                "filament",
+                "filament-easy-footer",
+                "filament-php",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/devonab/filament-easy-footer/issues",
+                "source": "https://github.com/devonab/filament-easy-footer"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Devonab",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-26T19:16:33+00:00"
+        },
+        {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
             "source": {
@@ -1374,7 +1453,7 @@
         },
         {
             "name": "filament/actions",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/actions.git",
@@ -1427,16 +1506,16 @@
         },
         {
             "name": "filament/filament",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/panels.git",
-                "reference": "2ddea9d4c3c7d1bfce2d9ea6b3d7d7fe8c5682ec"
+                "reference": "46fe3ae6d947e7a59db5e4eab0688ac8edce67e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/panels/zipball/2ddea9d4c3c7d1bfce2d9ea6b3d7d7fe8c5682ec",
-                "reference": "2ddea9d4c3c7d1bfce2d9ea6b3d7d7fe8c5682ec",
+                "url": "https://api.github.com/repos/filamentphp/panels/zipball/46fe3ae6d947e7a59db5e4eab0688ac8edce67e2",
+                "reference": "46fe3ae6d947e7a59db5e4eab0688ac8edce67e2",
                 "shasum": ""
             },
             "require": {
@@ -1488,20 +1567,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-02-25T08:19:05+00:00"
+            "time": "2025-03-03T09:07:04+00:00"
         },
         {
             "name": "filament/forms",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/forms.git",
-                "reference": "2d3670835f3fef356e8a0c2dc756eeb9f9acce73"
+                "reference": "62415954fb49605bd039f3870178cea366a554cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/forms/zipball/2d3670835f3fef356e8a0c2dc756eeb9f9acce73",
-                "reference": "2d3670835f3fef356e8a0c2dc756eeb9f9acce73",
+                "url": "https://api.github.com/repos/filamentphp/forms/zipball/62415954fb49605bd039f3870178cea366a554cd",
+                "reference": "62415954fb49605bd039f3870178cea366a554cd",
                 "shasum": ""
             },
             "require": {
@@ -1544,20 +1623,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-02-25T08:19:00+00:00"
+            "time": "2025-03-03T09:06:35+00:00"
         },
         {
             "name": "filament/infolists",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/infolists.git",
-                "reference": "3e5f9d2ec79a2be9080c9e081c5284bbeb93ed7a"
+                "reference": "3498bfd23670f94d9c2160d2a7382775dfc97430"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/infolists/zipball/3e5f9d2ec79a2be9080c9e081c5284bbeb93ed7a",
-                "reference": "3e5f9d2ec79a2be9080c9e081c5284bbeb93ed7a",
+                "url": "https://api.github.com/repos/filamentphp/infolists/zipball/3498bfd23670f94d9c2160d2a7382775dfc97430",
+                "reference": "3498bfd23670f94d9c2160d2a7382775dfc97430",
                 "shasum": ""
             },
             "require": {
@@ -1595,11 +1674,11 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-02-25T08:19:04+00:00"
+            "time": "2025-03-03T08:11:43+00:00"
         },
         {
             "name": "filament/notifications",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/notifications.git",
@@ -1651,7 +1730,7 @@
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-media-library-plugin.git",
@@ -1688,7 +1767,7 @@
         },
         {
             "name": "filament/spatie-laravel-settings-plugin",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/spatie-laravel-settings-plugin.git",
@@ -1735,16 +1814,16 @@
         },
         {
             "name": "filament/support",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/support.git",
-                "reference": "9ae768216b8f1cd6921946c98364b95f51053b20"
+                "reference": "90898e972db25db5749d992151790bbfce87563e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/support/zipball/9ae768216b8f1cd6921946c98364b95f51053b20",
-                "reference": "9ae768216b8f1cd6921946c98364b95f51053b20",
+                "url": "https://api.github.com/repos/filamentphp/support/zipball/90898e972db25db5749d992151790bbfce87563e",
+                "reference": "90898e972db25db5749d992151790bbfce87563e",
                 "shasum": ""
             },
             "require": {
@@ -1790,20 +1869,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-02-25T08:19:17+00:00"
+            "time": "2025-03-03T09:07:23+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/tables.git",
-                "reference": "0b5152d810780d03a560b8e5387dc61881b72b42"
+                "reference": "5f2fbd8f0c6ffd19b2462269778ed96ce3c6fd35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/tables/zipball/0b5152d810780d03a560b8e5387dc61881b72b42",
-                "reference": "0b5152d810780d03a560b8e5387dc61881b72b42",
+                "url": "https://api.github.com/repos/filamentphp/tables/zipball/5f2fbd8f0c6ffd19b2462269778ed96ce3c6fd35",
+                "reference": "5f2fbd8f0c6ffd19b2462269778ed96ce3c6fd35",
                 "shasum": ""
             },
             "require": {
@@ -1842,11 +1921,11 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-02-25T08:19:15+00:00"
+            "time": "2025-03-03T09:07:30+00:00"
         },
         {
             "name": "filament/widgets",
-            "version": "v3.3.0",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/widgets.git",
@@ -2517,39 +2596,31 @@
         },
         {
             "name": "jeffgreco13/filament-breezy",
-            "version": "v2.5.2",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeffgreco13/filament-breezy.git",
-                "reference": "62d679cbf5f082e2053a654d9152595135dc1d69"
+                "reference": "7a9bbd53b1097c7bba01252c6976ea5ed78cb344"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeffgreco13/filament-breezy/zipball/62d679cbf5f082e2053a654d9152595135dc1d69",
-                "reference": "62d679cbf5f082e2053a654d9152595135dc1d69",
+                "url": "https://api.github.com/repos/jeffgreco13/filament-breezy/zipball/7a9bbd53b1097c7bba01252c6976ea5ed78cb344",
+                "reference": "7a9bbd53b1097c7bba01252c6976ea5ed78cb344",
                 "shasum": ""
             },
             "require": {
                 "bacon/bacon-qr-code": "^3.0",
                 "filament/filament": "^3.0.9",
-                "illuminate/contracts": "^10.0|^11.0",
-                "php": "^8.1",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": "^8.1|^8.2|^8.3|^8.4",
                 "pragmarx/google2fa": "^7.0|^8.0",
                 "spatie/laravel-package-tools": "^1.14.0"
             },
             "require-dev": {
-                "larastan/larastan": "^2.0.1",
-                "laravel/pint": "^1.0",
-                "nunomaduro/collision": "^7.9",
-                "orchestra/testbench": "^8.8",
-                "pestphp/pest": "^2.20",
-                "pestphp/pest-plugin-arch": "^2.0",
-                "pestphp/pest-plugin-laravel": "^2.0",
-                "pestphp/pest-plugin-livewire": "^2.1",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "spatie/laravel-ray": "^1.26"
+                "pestphp/pest": "^2.20|^3.7",
+                "pestphp/pest-plugin-arch": "^2.0|^v3.0.0",
+                "pestphp/pest-plugin-laravel": "^2.0|^v3.1.0",
+                "pestphp/pest-plugin-livewire": "^2.1|^v3.0.0"
             },
             "type": "library",
             "extra": {
@@ -2587,9 +2658,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jeffgreco13/filament-breezy/issues",
-                "source": "https://github.com/jeffgreco13/filament-breezy/tree/v2.5.2"
+                "source": "https://github.com/jeffgreco13/filament-breezy/tree/v2.6.0"
             },
-            "time": "2025-02-01T16:13:59+00:00"
+            "time": "2025-03-03T07:39:38+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -3835,16 +3906,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.6.0",
+            "version": "v3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "4c66b569cb729ba9b2f4a3c4e79f50fd8f2b71d1"
+                "reference": "0df0a762698176d714e42e2dfed92b6b9e24b8e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/4c66b569cb729ba9b2f4a3c4e79f50fd8f2b71d1",
-                "reference": "4c66b569cb729ba9b2f4a3c4e79f50fd8f2b71d1",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/0df0a762698176d714e42e2dfed92b6b9e24b8e4",
+                "reference": "0df0a762698176d714e42e2dfed92b6b9e24b8e4",
                 "shasum": ""
             },
             "require": {
@@ -3899,7 +3970,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.6.0"
+                "source": "https://github.com/livewire/livewire/tree/v3.6.1"
             },
             "funding": [
                 {
@@ -3907,7 +3978,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-26T00:57:32+00:00"
+            "time": "2025-03-04T21:48:52+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -3986,6 +4057,72 @@
                 }
             ],
             "time": "2025-01-27T12:07:53+00:00"
+        },
+        {
+            "name": "malzariey/filament-daterangepicker-filter",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/malzariey/filament-daterangepicker-filter.git",
+                "reference": "990c9b2a756d1adb0c851b5fc10e0dda6b5c7f2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/malzariey/filament-daterangepicker-filter/zipball/990c9b2a756d1adb0c851b5fc10e0dda6b5c7f2c",
+                "reference": "990c9b2a756d1adb0c851b5fc10e0dda6b5c7f2c",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "illuminate/contracts": "^8.0|^9.0|^10.0|^11.0|^11.0|^12.0",
+                "spatie/laravel-package-tools": "^1.16.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentDaterangepickerFilter": "Malzariey\\FilamentDaterangepickerFilter\\Facades\\FilamentDaterangepickerFilter"
+                    },
+                    "providers": [
+                        "Malzariey\\FilamentDaterangepickerFilter\\FilamentDaterangepickerFilterServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Malzariey\\FilamentDaterangepickerFilter\\": "src",
+                    "Malzariey\\FilamentDaterangepickerFilter\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Majid Al-Zariey",
+                    "email": "malzariey@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package uses daterangepciker library to filter date by a range or predefined date ranges (Today , Yesterday ...etc)",
+            "homepage": "https://github.com/malzariey/filament-daterangepicker-filter",
+            "keywords": [
+                "Malzariey",
+                "filament-daterangepicker-filter",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/malzariey/filament-daterangepicker-filter/issues",
+                "source": "https://github.com/malzariey/filament-daterangepicker-filter/tree/3.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Malzariey",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-25T12:48:10+00:00"
         },
         {
             "name": "masterminds/html5",
@@ -6657,16 +6794,16 @@
         },
         {
             "name": "spatie/laravel-health",
-            "version": "1.32.3",
+            "version": "1.32.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-health.git",
-                "reference": "3a3665f36902201c2dd9617e0b85659ef6595f91"
+                "reference": "6510025255c04fa2bd37c2a6611095c5129b53c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/3a3665f36902201c2dd9617e0b85659ef6595f91",
-                "reference": "3a3665f36902201c2dd9617e0b85659ef6595f91",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/6510025255c04fa2bd37c2a6611095c5129b53c2",
+                "reference": "6510025255c04fa2bd37c2a6611095c5129b53c2",
                 "shasum": ""
             },
             "require": {
@@ -6738,7 +6875,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-health/tree/1.32.3"
+                "source": "https://github.com/spatie/laravel-health/tree/1.32.4"
             },
             "funding": [
                 {
@@ -6746,7 +6883,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-24T07:32:22+00:00"
+            "time": "2025-03-03T08:40:12+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

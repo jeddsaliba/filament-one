@@ -34,6 +34,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 [Create Administrator Account](#create-admin-account)<br/>
 [Generate Test Data](#generate-test-data)<br/>
 [Initialize The Application](#initialize-the-application)<br/>
+[Troubleshooting](#troubleshooting)<br/>
 [Plugins Used](#plugins-used)<br/>
 [Acknowledgments](#acknowledgments)<br/>
 [Support](#support)
@@ -143,6 +144,14 @@ or
 
 ```bash
 php artisan serve
+```
+
+<a name="troubleshooting"></a>
+## Troubleshooting
+1. If the css and js for the custom page are not working, please run this command:
+
+```bash
+npm run build
 ```
 
 <a name="plugins-used"></a>
