@@ -164,6 +164,8 @@ These are [Filament Plugins](https://filamentphp.com/plugins) use for this proje
 | [ActivityLog](https://github.com/rmsramos/activitylog)                                              | [Rômulo Ramos](https://github.com/rmsramos)             |
 | [Breezy](https://github.com/jeffgreco13/filament-breezy)                                            | [Jeff Greco](https://github.com/jeffgreco13)            |
 | [Comments](https://github.com/parallax/filament-comments)                                           | [Parallax](https://github.com/parallax)                 |
+| [Date Range Filter and Picker](https://github.com/malzariey/filament-daterangepicker-filter)        | [Majid Al Zariey](https://github.com/malzariey)         |
+| [Easy Footer](https://github.com/devonab/filament-easy-footer)                                      | [Alexandre](https://github.com/Devonab)                 |
 | [Environment Indicator](https://github.com/pxlrbt/filament-environment-indicator)                   | [Dennis Koch](https://github.com/pxlrbt)                |
 | [Filament Spatie Media Library](https://github.com/filamentphp/spatie-laravel-media-library-plugin) | [Filament Official](https://github.com/filamentphp)     |
 | [Filament Spatie Settings](https://github.com/filamentphp/spatie-laravel-settings-plugin)           | [Filament Official](https://github.com/filamentphp)     |
