@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2025-03-08
+### Added
+- **Messages:** Provides an easy-to-use interface for real-time messaging within Filament admin panels.
+  - User-to-User & Group Chats
+  - Unread Message Badges
+  - File Attachments
+  - Configurable Refresh Interval
+  - Timezone Support
+
+---
+
 ## [1.2.0] - 2025-03-05
 ### Added
 - **Easy Footer:** A simple plugin to display a customizable footer in your Filament application.

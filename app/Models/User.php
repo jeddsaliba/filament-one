@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\MediaCollectionType;
 use App\Models\Traits\HasActivityLogs;
 use App\Models\Traits\HasMediaConvertionRegistrations;
+use App\Models\Traits\HasMessages;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
@@ -25,7 +26,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasActivityLogs, HasFactory, HasFilamentComments, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
+    use HasActivityLogs, HasFactory, HasFilamentComments, HasMessages, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
