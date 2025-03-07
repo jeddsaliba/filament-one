@@ -16,6 +16,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 - **Multi-Factor Authentication (MFA):** Enhance security with optional two-factor authentication for user accounts.
 - **API Keys Management:** Enable secure storage and management of API keys and credentials, facilitating seamless integration with internal and third-party APIs.
 - **User Roles & Permissions:** Implement role-based access control (RBAC) to ensure users have the right level of access.
+- **Messages:** Provides an easy-to-use interface for real-time messaging within Filament admin panels.
 - **Export Reports:** Generate and export reports in Excel (.xlsx) or CSV formats for data analysis and record-keeping.
 - **Page Builder:** A drag-and-drop interface that allows users to create, customize, and manage pages effortlessly. Supports various content blocks, real-time preview, and responsive design to ensure a seamless experience across devices.
 
