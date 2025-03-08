@@ -117,7 +117,7 @@ class Messages extends Component implements HasForms
 
                 $this->conversationMessages->prepend($newMessage);
                 collect($rawData['attachments'])->each(function ($attachment) use ($newMessage) {
-                    $newMessage->addMedia($attachment)->usingFileName(Str::slug(config('filament-messages.slug'), '_') . '_' . Str::random(20) .'.'.$attachment->extension())->toMediaCollection();
+                    $newMessage->addMedia($attachment)->usingFileName(Str::slug(config('filament-messages.slug'), '_') . '_' . Str::random(20) .'.'.$attachment->extension())->toMediaCollection(MediaCollectionType::FILAMENT_MESSENGER->value);
                 });
 
                 $this->form->fill();
