@@ -79,8 +79,8 @@
                                 @if ($message->message)
                                     <p class="text-sm">{!! nl2br($message->message) !!}</p>
                                 @endif
-                                @if ($message->getMedia(MediaCollectionType::FILAMENT_MESSENGER->value) && count($message->getMedia(MediaCollectionType::FILAMENT_MESSENGER->value)) > 0)
-                                    @foreach ($message->getMedia(MediaCollectionType::FILAMENT_MESSENGER->value) as $index => $media)
+                                @if ($message->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value) && count($message->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value)) > 0)
+                                    @foreach ($message->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value) as $index => $media)
                                         <div wire:click="downloadAttachment('{{ $media->getPath() }}', '{{ $media->file_name }}')"
                                             @class([
                                                 'flex items-center gap-2 p-2 my-2 rounded-lg group cursor-pointer',

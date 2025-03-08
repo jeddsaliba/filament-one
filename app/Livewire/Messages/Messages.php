@@ -71,7 +71,7 @@ class Messages extends Component implements HasForms
             ->schema([
                 Forms\Components\SpatieMediaLibraryFileUpload::make('attachments')
                     ->hiddenLabel()
-                    ->collection(MediaCollectionType::FILAMENT_MESSENGER->value)
+                    ->collection(MediaCollectionType::FILAMENT_MESSAGES->value)
                     ->multiple()
                     ->panelLayout('grid')
                     ->visible(fn () => $this->showUpload)
@@ -117,7 +117,7 @@ class Messages extends Component implements HasForms
 
                 $this->conversationMessages->prepend($newMessage);
                 collect($rawData['attachments'])->each(function ($attachment) use ($newMessage) {
-                    $newMessage->addMedia($attachment)->usingFileName(Str::slug(config('filament-messages.slug'), '_') . '_' . Str::random(20) .'.'.$attachment->extension())->toMediaCollection(MediaCollectionType::FILAMENT_MESSENGER->value);
+                    $newMessage->addMedia($attachment)->usingFileName(Str::slug(config('filament-messages.slug'), '_') . '_' . Str::random(20) .'.'.$attachment->extension())->toMediaCollection(MediaCollectionType::FILAMENT_MESSAGES->value);
                 });
 
                 $this->form->fill();

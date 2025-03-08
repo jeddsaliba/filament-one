@@ -1,5 +1,6 @@
 @php
     use App\Filament\Pages\Messages;
+    use App\Enums\MediaCollectionType;
 @endphp
 
 @props(['selectedConversation'])
@@ -80,8 +81,8 @@
                                             <span class="font-bold">
                                                 {{ $conversation->latestMessage()->user_id == auth()->id() ? 'You:' : $conversation->latestMessage()->sender->name . ':' }}
                                             </span>
-                                            @if ($conversation->latestMessage()->getMedia() && count($conversation->latestMessage()->getMedia()) > 0)
-                                                {{ count($conversation->latestMessage()->getMedia()) > 1 ? 'Attachments' : 'Attachment' }}
+                                            @if ($conversation->latestMessage()->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value) && count($conversation->latestMessage()->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value)) > 0)
+                                                {{ count($conversation->latestMessage()->getMedia(MediaCollectionType::FILAMENT_MESSAGES->value)) > 1 ? 'Attachments' : 'Attachment' }}
                                             @else
                                                 {{ $conversation->latestMessage()->message }}
                                             @endif

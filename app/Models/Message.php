@@ -47,14 +47,14 @@ class Message extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection(MediaCollectionType::FILAMENT_MESSENGER->value)
+        $this->addMediaCollection(MediaCollectionType::FILAMENT_MESSAGES->value)
             ->registerMediaConversions($this->modelMediaConvertionRegistrations());
     }
 
     public function attachments(): MorphMany
     {
         return $this->morphMany(Media::class, 'model')
-            ->where('collection_name', MediaCollectionType::FILAMENT_MESSENGER);
+            ->where('collection_name', MediaCollectionType::FILAMENT_MESSAGES);
     }
 
     public function sender(): BelongsTo
