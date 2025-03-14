@@ -5,6 +5,7 @@
 Built using **FilamentPHP**, it leverages modern PHP development practices to ensure a smooth and efficient experience.
 
 ![GitHub stars](https://img.shields.io/github/stars/jeddsaliba/filament-one?style=flat-square)
+![GitHub issues](https://img.shields.io/github/forks/jeddsaliba/filament-one?style=flat-square)
 ![GitHub issues](https://img.shields.io/github/issues/jeddsaliba/filament-one?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
 ![PHP Version](https://img.shields.io/badge/PHP-8.2-blue?style=flat-square&logo=php)
