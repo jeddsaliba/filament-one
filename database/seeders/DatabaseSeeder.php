@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PageBuilderSeeder::class,
             ApiIntegrationSeeder::class,
+            InboxSeeder::class,
+            MessageSeeder::class,
         ]);
     }
 }

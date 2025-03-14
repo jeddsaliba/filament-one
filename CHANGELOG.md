@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2025-03-14
+### Added
+- **Inbox:** Factory and seeder.
+- **Message:** Factory and seeder.
+
+---
+
 ## [1.3.2] - 2025-03-08
 ### Updated
 - **Messages:** Message resources.

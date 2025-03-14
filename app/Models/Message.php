@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Enums\MediaCollectionType;
+use App\Models\Traits\HasActivityLogs;
 use App\Models\Traits\HasMediaConvertionRegistrations;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -13,7 +15,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Message extends Model implements HasMedia
 {
-    use HasMediaConvertionRegistrations, SoftDeletes;
+    use HasActivityLogs, HasFactory, HasMediaConvertionRegistrations, SoftDeletes;
 
     protected $table = 'fm_messages';
 
@@ -23,7 +25,7 @@ class Message extends Model implements HasMedia
      * @var list<string>
      */
     protected $fillable = [
-        'fm_inbox_id',
+        'inbox_id',
         'message',
         'user_id',
         'read_by',
