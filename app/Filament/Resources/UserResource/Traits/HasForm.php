@@ -12,6 +12,13 @@ use Illuminate\Support\Str;
 
 trait HasForm
 {
+    /**
+     * Builds an array representing the form schema for user resource forms,
+     * structured with multiple tabs for different sections of user data.
+     *
+     * @return array The form schema array containing tab components for
+     *               'Basic Information', 'Change Password', and 'Reset Password'.
+     */
     public static function formBuilder(): array
     {
         return [
@@ -32,6 +39,14 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Basic Information'
+     * tab for user resource forms, containing fields for name, email, phone,
+     * birthdate, and roles.
+     *
+     * @return array The form schema array containing form components for
+     *               'Basic Information'.
+     */
     public static function basicInformationForm(): array
     {
         return [
@@ -62,6 +77,16 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Change Password'
+     * tab, containing password input fields and actions for generating and
+     * confirming passwords. The password fields are revealable and required
+     * when creating a new record. A hint action is provided to generate a 
+     * random password.
+     *
+     * @return array The form schema array containing form components for
+     *               password input and confirmation.
+     */
     public static function passwordForm(): array
     {
         return [
@@ -85,6 +110,15 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Reset Password'
+     * tab, containing an action for generating a random password and sending
+     * it to the user's email address. The action will prompt the user to change
+     * the password on initial login.
+     *
+     * @return array The form schema array containing a single form section and
+     *               an action for resetting the password.
+     */
     public static function resetPasswordForm(): array
     {
         return [

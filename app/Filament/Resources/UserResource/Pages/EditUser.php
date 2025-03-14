@@ -12,6 +12,14 @@ class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
 
+    /**
+     * Custom header actions for this resource.
+     *
+     * Adds a delete/force delete/restore action group, but only if the record is not the current user.
+     * Also adds an action group with a comments action and an activity log action.
+     *
+     * @return array
+     */
     protected function getHeaderActions(): array
     {
         return [
@@ -38,6 +46,14 @@ class EditUser extends EditRecord
         ];
     }
 
+    /**
+     * Removes the password and password confirmation fields from the form data
+     * if they are empty. This is to prevent overwriting the existing password
+     * with a blank value when updating a user.
+     *
+     * @param array $data the form data
+     * @return array the mutated form data
+     */
     protected function mutateFormDataBeforeSave(array $data): array
     {
         if (empty($data['password'])) {

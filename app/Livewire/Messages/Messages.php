@@ -33,6 +33,16 @@ class Messages extends Component implements HasForms
 
     public bool $showUpload = false;
 
+    /**
+     * Initialize the Messages component.
+     *
+     * This method is called when the component is mounted.
+     * It sets the polling interval, fills the form state, and 
+     * if a conversation is selected, initializes the conversation
+     * messages, loads existing messages, and marks them as read.
+     * 
+     * @return void
+     */
     public function mount(): void
     {
         $this->setPollInterval();
@@ -45,9 +55,16 @@ class Messages extends Component implements HasForms
     }
 
     /**
-     * 
+     * Poll for new messages in the selected conversation.
+     *
+     * This method retrieves messages that are newer than the
+     * latest message currently loaded in the conversation.
+     * If new messages are found, they are prepended to the
+     * existing collection of conversation messages.
+     *
+     * @return void
      */
-    public function pollMessages()
+    public function pollMessages(): void
     {
         $latestId = $this->conversationMessages->pluck('id')->first();
         $polledMessages = $this->selectedConversation->messages()->where('id', '>', $latestId)->latest()->get();
@@ -59,12 +76,31 @@ class Messages extends Component implements HasForms
         }
     }
 
-    public function loadMessages()
+    /**
+     * Load the next page of messages for the selected conversation.
+     *
+     * This method appends the messages from the next page to the
+     * existing collection of conversation messages and increments
+     * the current page number.
+     *
+     * @return void
+     */
+    public function loadMessages(): void
     {
         $this->conversationMessages->push(...$this->paginator->getCollection());
         $this->currentPage = $this->currentPage + 1;
     }
 
+    /**
+     * Customize the form.
+     *
+     * The form schema is defined in this method which is called
+     * when the component is mounted. The form state is stored in
+     * the 'data' property.
+     *
+     * @param \Filament\Forms\Form $form
+     * @return \Filament\Forms\Form
+     */
     public function form(Form $form): Form
     {
         return $form
@@ -98,6 +134,12 @@ class Messages extends Component implements HasForms
             ])->statePath('data');
     }
 
+    /**
+     * Saves the message and all the associated attachments, and refreshes the inbox and messages list.
+     *
+     * @return void
+     * @throws \Exception
+     */
     public function sendMessage(): void
     {
         $data = $this->form->getState();
@@ -138,17 +180,34 @@ class Messages extends Component implements HasForms
         }
     }
 
+    /**
+     * Computes the paginator for the conversation messages.
+     *
+     * @return \Illuminate\Contracts\Pagination\Paginator
+     */
     #[Computed()]
-    public function paginator()
+    public function paginator(): \Illuminate\Contracts\Pagination\Paginator
     {
         return $this->selectedConversation->messages()->latest()->paginate(10, ['*'], 'page', $this->currentPage);
     }
 
+    /**
+     * Download an attachment from the given file path and return it as a response.
+     *
+     * @param string $filePath
+     * @param string $fileName
+     * @return \Illuminate\Http\Response
+     */
     public function downloadAttachment(string $filePath, string $fileName)
     {
         return response()->download($filePath, $fileName);
     }
 
+    /**
+     * Determines if the message input is valid.
+     *
+     * @return bool
+     */
     public function validateMessage(): bool
     {
         $rawData = $this->form->getRawState();
@@ -158,7 +217,16 @@ class Messages extends Component implements HasForms
         return false;
     }
 
-    public function render()
+    /**
+     * Render the messages view for the Livewire component.
+     *
+     * This method returns the view responsible for displaying
+     * the messages interface, which includes the chat box and
+     * input area for sending messages.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.messages.messages');
     }

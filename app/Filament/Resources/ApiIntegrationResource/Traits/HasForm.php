@@ -7,6 +7,13 @@ use Illuminate\Support\Str;
 
 trait HasForm
 {
+    /**
+     * Builds an array representing the form schema for the ApiIntegration resource,
+     * structured with an array of form components for name, slug, keys, and is_active.
+     *
+     * @return array The form schema array containing form components for
+     *               'API Integration Details'.
+     */
     public static function formBuilder(): array
     {
         return [

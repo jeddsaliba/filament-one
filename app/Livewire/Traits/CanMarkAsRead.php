@@ -7,7 +7,16 @@ use Illuminate\Support\Facades\Auth;
 
 trait CanMarkAsRead
 {
-    public function markAsRead()
+    /**
+     * Marks all messages in the selected conversation as read by the current user.
+     *
+     * Iterates over each message in the selected conversation, checking if the
+     * current user is not already in the `read_by` list, and updates the message
+     * to include the current user in both the `read_by` and `read_at` attributes.
+     * 
+     * @return void
+     */
+    public function markAsRead(): void
     {
         $this->selectedConversation?->messages()->each(function (Message $message) {
             $message->where(['inbox_id' => $message->inbox_id])->whereJsonDoesntContain('read_by', Auth::id())

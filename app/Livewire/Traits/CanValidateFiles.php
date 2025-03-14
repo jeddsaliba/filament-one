@@ -44,6 +44,12 @@ trait CanValidateFiles
         'mpg',      // For video/mpeg (alternative extension)
     ];
 
+    /**
+     * Validates if the given audio file path has a valid extension.
+     *
+     * @param string $imagePath
+     * @return bool
+     */
     public function validateAudio(string $imagePath): bool
     {
         $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
@@ -55,6 +61,12 @@ trait CanValidateFiles
         return false;
     }
 
+    /**
+     * Validates if the given document file path has a valid extension.
+     *
+     * @param string $documentPath
+     * @return bool
+     */
     public function validateDocument(string $documentPath): bool
     {
         $extension = strtolower(pathinfo($documentPath, PATHINFO_EXTENSION));
@@ -66,6 +78,12 @@ trait CanValidateFiles
         return false;
     }
 
+    /**
+     * Validates if the given image file path has a valid extension.
+     *
+     * @param string $imagePath
+     * @return bool
+     */
     public function validateImage(string $imagePath): bool
     {
         $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));
@@ -77,6 +95,12 @@ trait CanValidateFiles
         return false;
     }
 
+    /**
+     * Validates if the given video file path has a valid extension.
+     *
+     * @param string $videoPath
+     * @return bool
+     */
     public function validateVideo(string $imagePath): bool
     {
         $extension = strtolower(pathinfo($imagePath, PATHINFO_EXTENSION));

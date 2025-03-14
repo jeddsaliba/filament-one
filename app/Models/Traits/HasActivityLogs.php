@@ -9,6 +9,11 @@ trait HasActivityLogs
 {
     use LogsActivity;
 
+    /**
+     * Configure the activity log settings.
+     *
+     * @return \Spatie\Activitylog\LogOptions
+     */
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

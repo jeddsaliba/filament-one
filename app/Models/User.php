@@ -62,13 +62,23 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
         ];
     }
 
+    /**
+     * Get the user profile associated with the User
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<UserProfile>
+     */
     public function userProfile(): HasOne
     {
         return $this->hasOne(UserProfile::class);
     }
 
     /**
-     * Register media collections
+     * Register media collections for the User model.
+     * 
+     * This method adds a media collection for 'USER_PROFILE' and registers
+     * media conversions using the defined conversion registrations.
+     * 
+     * @return void
      */
     public function registerMediaCollections(): void
     {
@@ -76,12 +86,26 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
             ->registerMediaConversions($this->modelMediaConvertionRegistrations());
     }
 
+    /**
+     * Get the user's avatar.
+     *
+     * This method returns a MorphOne relationship to the media table
+     * where the collection_name is equal to the 'USER_PROFILE' enum value.
+     *
+     * @return MorphOne<Media>
+     */
     public function avatar(): MorphOne
     {
         return $this->morphOne(Media::class, 'model')
             ->where('collection_name', MediaCollectionType::USER_PROFILE);
     }
 
+    /**
+     * Returns the URL of the user's avatar. This is used by the Filament package
+     * to display the user's avatar in the navigation menu.
+     *
+     * @return string|null
+     */
     public function getFilamentAvatarUrl(): ?string
     {
         return $this->avatar?->getFullUrl();

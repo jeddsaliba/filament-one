@@ -10,6 +10,13 @@ class EditApiIntegration extends EditRecord
 {
     protected static string $resource = ApiIntegrationResource::class;
 
+    /**
+     * Custom header actions for this resource.
+     *
+     * Adds a delete/force delete/restore action group, as well as an action group with a comments action and an activity log action.
+     *
+     * @return array
+     */
     protected function getHeaderActions(): array
     {
         return [

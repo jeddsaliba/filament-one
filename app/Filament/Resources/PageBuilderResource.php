@@ -26,12 +26,23 @@ class PageBuilderResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    /**
+     * Builds the form for the resource.
+     *
+     * @param \Filament\Forms\Form $form
+     * @return \Filament\Forms\Form
+     */
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema(self::formBuilder());
     }
 
+    /**
+     * Gets the relationships that should be eager loaded when performing an index query.
+     *
+     * @return array<string>
+     */
     public static function getRelations(): array
     {
         return [
@@ -39,6 +50,11 @@ class PageBuilderResource extends Resource
         ];
     }
 
+    /**
+     * Get the page routes for the PageBuilder resource.
+     *
+     * @return array<string, \Filament\Resources\Pages\Page> The array of page routes.
+     */
     public static function getPages(): array
     {
         return [
@@ -48,6 +64,11 @@ class PageBuilderResource extends Resource
         ];
     }
 
+    /**
+     * Gets the query for the resource's index action.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

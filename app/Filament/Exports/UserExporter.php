@@ -11,6 +11,11 @@ class UserExporter extends Exporter
 {
     protected static ?string $model = User::class;
 
+    /**
+     * Returns the columns for the export.
+     *
+     * @return array
+     */
     public static function getColumns(): array
     {
         return [
@@ -28,6 +33,12 @@ class UserExporter extends Exporter
         ];
     }
 
+    /**
+     * Returns the notification body for when the export is complete.
+     *
+     * @param Export $export
+     * @return string
+     */
     public static function getCompletedNotificationBody(Export $export): string
     {
         $body = 'Your user export has completed and ' . number_format($export->successful_rows) . ' ' . str('row')->plural($export->successful_rows) . ' exported.';

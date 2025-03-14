@@ -12,6 +12,11 @@ enum NavGroup: string implements HasIcon, HasLabel
     case UM = 'User Management';
     case ST = 'Settings';
 
+    /**
+     * Gets the icon for the navigation group.
+     *
+     * @return string|null The icon class name.
+     */
     public function getIcon(): ?string
     {
         return match ($this) {
@@ -21,6 +26,11 @@ enum NavGroup: string implements HasIcon, HasLabel
         };
     }
 
+    /**
+     * Gets the label for the navigation group.
+     *
+     * @return string The title-cased label.
+     */
     public function getLabel(): string
     {
         return Str::title($this->value);

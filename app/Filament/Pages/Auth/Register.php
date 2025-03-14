@@ -11,6 +11,12 @@ use Spatie\Permission\Models\Role;
 
 class Register extends BaseRegister
 {
+    /**
+     * Handle the registration process for the given input.
+     *
+     * @param array $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
     protected function handleRegistration(array $data): Model
     {
         $user = $this->getUserModel()::create($data);
@@ -22,6 +28,9 @@ class Register extends BaseRegister
         return $user;
     }
 
+    /**
+     * @return array<string, Forms\ComponentContainer>
+     */
     protected function getForms(): array
     {
         return [
@@ -39,6 +48,11 @@ class Register extends BaseRegister
         ];
     }
 
+    /**
+     * Generates a select form component for selecting a role during user registration.
+     *
+     * @return \Filament\Forms\Components\Select
+     */
     protected function getRoleFormComponent(): Forms\Components\Select
     {
         return Forms\Components\Select::make('role')

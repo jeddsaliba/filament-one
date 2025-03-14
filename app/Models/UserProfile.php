@@ -35,6 +35,11 @@ class UserProfile extends Model
         ];
     }
 
+    /**
+     * The user that owns the UserProfile
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

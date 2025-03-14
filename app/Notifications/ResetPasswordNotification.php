@@ -30,7 +30,15 @@ class ResetPasswordNotification extends Notification implements ShouldQueue
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Get the mail representation of the reset password notification.
+     *
+     * This method constructs a MailMessage instance that represents the
+     * reset password notification. It includes the subject, greeting,
+     * user email, and temporary password. It also provides an action link
+     * to the login page.
+     *
+     * @param object $notifiable The notifiable entity that will receive the notification.
+     * @return MailMessage The mail message to be sent.
      */
     public function toMail(object $notifiable): MailMessage
     {

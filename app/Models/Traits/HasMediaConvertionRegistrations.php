@@ -10,6 +10,17 @@ trait HasMediaConvertionRegistrations
 {
     use InteractsWithMedia;
 
+    /**
+     * Registers media conversions for the model.
+     *
+     * This method adds 4 conversions to the media library:
+     * - original: non optimized, non queued
+     * - sm: 300x300, fit crop, non queued
+     * - md: 500x500, fit crop, non queued
+     * - lg: 800x800, fit crop, non queued
+     *
+     * @return callable
+     */
     public function modelMediaConvertionRegistrations(): callable
     {
         return function () {

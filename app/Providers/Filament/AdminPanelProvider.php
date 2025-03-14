@@ -32,6 +32,15 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class AdminPanelProvider extends PanelProvider
 {
+    /**
+     * Configures the admin panel with various settings, including branding, authentication,
+     * navigation, middleware, and plugins. Sets up resources, pages, widgets, and navigation groups.
+     * Enables additional features such as two-factor authentication, file uploads, and database
+     * notifications. Integrates plugins for enhanced functionality.
+     *
+     * @param Panel $panel The panel instance to configure.
+     * @return Panel The configured panel instance.
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel

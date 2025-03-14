@@ -7,6 +7,13 @@ use Illuminate\Support\Str;
 
 trait HasForm
 {
+    /**
+     * Builds an array representing the form schema for the PageBuilder resource,
+     * structured with multiple tabs for different sections of page data.
+     *
+     * @return array The form schema array containing tab components for
+     *               'Basic Information', 'Content', 'Custom Assets', and 'SEO'.
+     */
     public static function formBuilder(): array
     {
         return [
@@ -25,6 +32,16 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Basic Information'
+     * tab for the PageBuilder resource, containing fields for title, slug,
+     * description, and is_active. The slug field is dehydrated and unique,
+     * while the description field is a RichEditor and is required. The
+     * is_active toggle is also required.
+     *
+     * @return array The form schema array containing form components for
+     *               'Basic Information'.
+     */
     public static function basicInformationForm(): array
     {
         return [
@@ -59,6 +76,13 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Content'
+     * tab for the PageBuilder resource, containing a single GrapeJS
+     * field for the page content.
+     *
+     * @return array The form schema array containing the GrapeJS component.
+     */
     public static function contentForm(): array
     {
         return [
@@ -69,6 +93,15 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'Custom Assets'
+     * tab for the PageBuilder resource, containing AceEditor fields for
+     * custom CSS and custom JavaScript. Each field is labeled and set to
+     * the appropriate code mode.
+     *
+     * @return array The form schema array containing AceEditor components
+     *               for 'Custom CSS' and 'Custom JS'.
+     */
     public static function assetsForm(): array
     {
         return [
@@ -81,6 +114,14 @@ trait HasForm
         ];
     }
 
+    /**
+     * Builds an array representing the form schema for the 'SEO'
+     * tab for the PageBuilder resource, containing a KeyValue field
+     * for metadata with keys for description, keywords, and author.
+     *
+     * @return array The form schema array containing a KeyValue component
+     *               for metadata.
+     */
     public static function seoForm(): array
     {
         return [

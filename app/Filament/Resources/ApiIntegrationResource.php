@@ -23,12 +23,23 @@ class ApiIntegrationResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'name';
 
+    /**
+     * Build the form for the resource.
+     *
+     * @param \Filament\Forms\Form $form
+     * @return \Filament\Forms\Form
+     */
     public static function form(Forms\Form $form): Forms\Form
     {
         return $form
             ->schema(self::formBuilder());
     }
 
+    /**
+     * Get the relationships that should be eager loaded when performing an index query.
+     *
+     * @return array<string>
+     */
     public static function getRelations(): array
     {
         return [
@@ -36,6 +47,11 @@ class ApiIntegrationResource extends Resource
         ];
     }
 
+    /**
+     * Get the pages for the resource.
+     *
+     * @return array<string, Page>
+     */
     public static function getPages(): array
     {
         return [
@@ -45,6 +61,11 @@ class ApiIntegrationResource extends Resource
         ];
     }
 
+    /**
+     * Get the query for the resource's index action.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

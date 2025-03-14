@@ -17,6 +17,11 @@ class ListUsers extends ListRecords
 {
     protected static string $resource = UserResource::class;
 
+    /**
+     * Actions to display in the header of the table.
+     *
+     * @return array
+     */
     protected function getHeaderActions(): array
     {
         return [
@@ -24,6 +29,12 @@ class ListUsers extends ListRecords
         ];
     }
 
+    /**
+     * Configure the table within the list page.
+     *
+     * @param \Filament\Tables\Table $table
+     * @return \Filament\Tables\Table
+     */
     public function table(Tables\Table $table): Tables\Table
     {
         return $table

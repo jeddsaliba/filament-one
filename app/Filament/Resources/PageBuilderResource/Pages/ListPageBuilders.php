@@ -13,6 +13,13 @@ class ListPageBuilders extends ListRecords
 {
     protected static string $resource = PageBuilderResource::class;
 
+    /**
+     * Custom header actions for this resource.
+     *
+     * Only includes a create action.
+     *
+     * @return array
+     */
     protected function getHeaderActions(): array
     {
         return [
@@ -20,6 +27,21 @@ class ListPageBuilders extends ListRecords
         ];
     }
 
+    /**
+     * Builds the table for this resource.
+     *
+     * Adds columns to search for by title, slug, and URL. Adds a boolean column
+     * to indicate active status. Adds columns for created_at, updated_at, and
+     * deleted_at for sorting and toggling.
+     *
+     * Adds a Trashed filter.
+     *
+     * Adds an ActionGroup to edit, delete, and view activity logs for each record.
+     * Adds a BulkActionGroup with bulk delete, force delete, and restore actions.
+     *
+     * @param Table $table
+     * @return Table
+     */
     public function table(Table $table): Table
     {
         return $table

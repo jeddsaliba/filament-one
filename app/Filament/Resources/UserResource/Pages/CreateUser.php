@@ -20,6 +20,11 @@ class CreateUser extends CreateRecord
 
     private bool $sendCredentials = false;
 
+    /**
+     * Get the actions available for the form.
+     *
+     * @return array
+     */
     protected function getFormActions(): array
     {
         return [
@@ -31,6 +36,11 @@ class CreateUser extends CreateRecord
         ];
     }
 
+    /**
+     * Get the notification that should be sent after the record is created.
+     *
+     * @return \Filament\Notifications\Notification|null
+     */
     protected function getCreatedNotification(): ?Notifications\Notification
     {
         return Notifications\Notification::make()
@@ -39,6 +49,12 @@ class CreateUser extends CreateRecord
             ->send();
     }
 
+    /**
+     * Generates a create action for the form.
+     *
+     * @param string $type create or create_another
+     * @return Actions\Action
+     */
     private function createAction(string $type = 'create'): Actions\Action
     {
         return Actions\Action::make($type)
@@ -56,7 +72,7 @@ class CreateUser extends CreateRecord
                     ->color('warning')
                     ->icon('heroicon-o-envelope')
                     ->label('Confirm & send credentials')
-                    ->action(function (Actions\Action $action) use ($type) {
+                    ->action(function () use ($type) {
                         $this->sendCredentials = true;
                         $email = $this->data['email'];
                         $password = $this->data['password'];

@@ -10,6 +10,16 @@ class PersonalInfo extends LivewirePersonalInfo
 {
     public array $only = ['name', 'email', 'phone', 'birthdate'];
 
+    /**
+     * @inheritDoc
+     */
+    /**
+     * Gets the form schema for the Livewire component.
+     *
+     * @param Forms\Form $form The form instance.
+     *
+     * @return Forms\Form The form schema.
+     */
     public function form(Forms\Form $form): Forms\Form
     {
         $groupFields = Forms\Components\Group::make([
@@ -26,6 +36,11 @@ class PersonalInfo extends LivewirePersonalInfo
             : [$groupFields])->statePath('data');
     }
 
+    /**
+     * Saves the user and user profile with the updated data and sends a notification if the user is logged in.
+     * 
+     * @return void
+     */
     public function submit(): void
     {
         $data = collect($this->form->getState())->only($this->only)->all();

@@ -42,6 +42,11 @@ class PageBuilder extends Model
         ];
     }
 
+    /**
+     * Returns the full URL for the page.
+     *
+     * @return string
+     */
     protected function url(): Attribute
     {
         return Attribute::make(

@@ -12,6 +12,13 @@ class ListApiIntegrations extends ListRecords
 {
     protected static string $resource = ApiIntegrationResource::class;
 
+    /**
+     * Get the actions available for the header of the table.
+     *
+     * Adds a create action to the header of the table.
+     *
+     * @return array
+     */
     protected function getHeaderActions(): array
     {
         return [
@@ -19,6 +26,21 @@ class ListApiIntegrations extends ListRecords
         ];
     }
 
+    /**
+     * Configure the table within the list page.
+     *
+     * Adds columns to search for by name, slug, and ID. Adds a boolean column
+     * to indicate active status. Adds columns for created_at, updated_at, and
+     * deleted_at for sorting and toggling.
+     *
+     * Adds a Trashed filter.
+     *
+     * Adds an ActionGroup to edit, delete, and view activity logs for each record.
+     * Adds a BulkActionGroup with bulk delete, force delete, and restore actions.
+     *
+     * @param Tables\Table $table
+     * @return Tables\Table
+     */
     public function table(Tables\Table $table): Tables\Table
     {
         return $table
