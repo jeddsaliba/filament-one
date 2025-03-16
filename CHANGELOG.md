@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4] - 2025-03-16
+### Removed
+- Automatic migration after creating the project.
+
+### Updated
+- **2FA:** Enable/disable 2FA via .env.
+
+---
+
 ## [1.3.3] - 2025-03-14
 ### Added
 - **Inbox:** Factory and seeder.

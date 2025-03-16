@@ -112,4 +112,15 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Force 2FA
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define if 2FA should be forced on initial log in.
+    | By default, 2FA is not forced.
+    |
+    */
+
+    'force_2fa' => env('AUTH_FORCE_2FA', false),
 ];

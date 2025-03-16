@@ -106,7 +106,7 @@ class AdminPanelProvider extends PanelProvider
                         // UserProfileComponent::class,
                     ])
                     ->enableTwoFactorAuthentication(
-                        force: false, // force the user to enable 2FA before they can use the application (default = false)
+                        force: config('auth.force_2fa'), // force the user to enable 2FA before they can use the application (default = false)
                     )
                     ->avatarUploadComponent(function (FileUpload $fileUpload) {
                         return $fileUpload
