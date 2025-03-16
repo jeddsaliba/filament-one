@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.5] - 2025-03-16
+### Fixed
+- **Messages:** Redirect to conversation after creating new message.
+
+---
+
 ## [1.3.4] - 2025-03-16
 ### Removed
 - Automatic migration after creating the project.

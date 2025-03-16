@@ -134,7 +134,7 @@ class Inbox extends Component implements HasActions, HasForms
                     'read_at' => [now()],
                     'notified' => [Auth::id()],
                 ]);
-                redirect()->route('filament.admin.pages.filament-messages.{id?}', ['id' => $inboxId]);
+                redirect()->route('filament.admin.pages.messages.{id?}', ['id' => $inboxId]);
             })->extraAttributes([
                 'class' => 'w-full'
             ]);
