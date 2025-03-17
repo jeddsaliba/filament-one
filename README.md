@@ -37,6 +37,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 [Create Administrator Account](#create-admin-account)<br/>
 [Generate Test Data](#generate-test-data)<br/>
 [Initialize The Application](#initialize-the-application)<br/>
+[API Support](#api-support)<br/>
 [Troubleshooting](#troubleshooting)<br/>
 [Plugins Used](#plugins-used)<br/>
 [Acknowledgments](#acknowledgments)<br/>
@@ -148,6 +149,11 @@ or
 ```bash
 php artisan serve
 ```
+
+<a name="api-support"></a>
+## API Support
+Integrate **Filament One** with external applications via APIs.<br/>
+[Here](https://github.com/jeddsaliba/filament-one/blob/8b79bf5f4108b9c0f20fac1a2156604259b91a16/docs/postman/Filament%20One%20API.postman_collection.json) is the [postman](https://www.postman.com) collection. Just import it and you're all set!
 
 <a name="troubleshooting"></a>
 ## Troubleshooting
