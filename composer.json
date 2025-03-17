@@ -16,6 +16,7 @@
         "filament/spatie-laravel-settings-plugin": "^3.2",
         "jeffgreco13/filament-breezy": "^2.5",
         "laravel/framework": "^11.31",
+        "laravel/sanctum": "^4.0",
         "laravel/telescope": "^5.4",
         "laravel/tinker": "^2.9",
         "malzariey/filament-daterangepicker-filter": "^3.2",
@@ -23,6 +24,7 @@
         "pxlrbt/filament-environment-indicator": "^2.1",
         "riodwanto/filament-ace-editor": "^1.1",
         "rmsramos/activitylog": "^1.0",
+        "rupadana/filament-api-service": "^3.4",
         "shuvroroy/filament-spatie-laravel-health": "^2.3",
         "stechstudio/filament-impersonate": "^3.15",
         "ysfkaya/filament-phone-input": "^3.1"

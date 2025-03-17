@@ -27,6 +27,7 @@ class PageBuilder extends Model
         'custom_css',
         'custom_js',
         'meta',
+        'deleted_at',
     ];
 
     /**

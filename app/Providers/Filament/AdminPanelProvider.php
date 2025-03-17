@@ -136,6 +136,7 @@ class AdminPanelProvider extends PanelProvider
                 \pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin::make(),
                 \Rmsramos\Activitylog\ActivitylogPlugin::make()
                     ->navigationCountBadge(),
+                \Rupadana\ApiService\ApiServicePlugin::make(),
                 \ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin::make(),
             ])
             ->navigationGroups([

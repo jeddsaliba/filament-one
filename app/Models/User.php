@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Laravel\Sanctum\HasApiTokens;
 use Parallax\FilamentComments\Models\Traits\HasFilamentComments;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -26,7 +27,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasActivityLogs, HasFactory, HasFilamentComments, HasMessages, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
+    use HasActivityLogs, HasApiTokens, HasFactory, HasFilamentComments, HasMessages, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +38,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
         'name',
         'email',
         'password',
+        'deleted_at',
     ];
 
     /**

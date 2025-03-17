@@ -15,6 +15,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 **Key Features:**
 - **User Management:** Easily manage user accounts, including registration, profile updates, and deletion.
 - **Multi-Factor Authentication (MFA):** Enhance security with optional two-factor authentication for user accounts.
+- **API Support:** Enable seamless integration with external applications through a robust API layer. Includes authentication, data retrieval, and CRUD operations via RESTful endpoints.
 - **API Keys Management:** Enable secure storage and management of API keys and credentials, facilitating seamless integration with internal and third-party APIs.
 - **User Roles & Permissions:** Implement role-based access control (RBAC) to ensure users have the right level of access.
 - **Messages:** Provides an easy-to-use interface for real-time messaging within Filament admin panels.
@@ -164,6 +165,7 @@ These are [Filament Plugins](https://filamentphp.com/plugins) use for this proje
 | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------ |
 | [Ace Editor](https://github.com/riodwanto/filament-ace-editor)                                      | [Rio Dewanto P](https://github.com/riodwanto)           |
 | [ActivityLog](https://github.com/rmsramos/activitylog)                                              | [Rômulo Ramos](https://github.com/rmsramos)             |
+| [API Service](https://github.com/rupadana/filament-api-service)                                     | [Rupadana](https://github.com/rupadana)                 |
 | [Breezy](https://github.com/jeffgreco13/filament-breezy)                                            | [Jeff Greco](https://github.com/jeffgreco13)            |
 | [Comments](https://github.com/parallax/filament-comments)                                           | [Parallax](https://github.com/parallax)                 |
 | [Date Range Filter and Picker](https://github.com/malzariey/filament-daterangepicker-filter)        | [Majid Al Zariey](https://github.com/malzariey)         |

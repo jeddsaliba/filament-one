@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0] - 2025-03-17
+### Added
+- **API Support:** Introduced a new API layer that enables seamless integration with external applications. This includes authentication, data retrieval, and CRUD operations via RESTful endpoints.
+
+---
+
 ## [1.3.5] - 2025-03-16
 ### Fixed
 - **Messages:** Redirect to conversation after creating new message.

@@ -20,7 +20,8 @@ class ApiIntegration extends Model
         'name',
         'slug',
         'is_active',
-        'keys'
+        'keys',
+        'deleted_at',
     ];
 
     /**

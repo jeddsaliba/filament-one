@@ -1,0 +1,1515 @@
+{
+	"info": {
+		"_postman_id": "03da6df0-3872-434f-af80-9f86ec3e68ee",
+		"name": "Filament One API",
+		"description": "This Postman API Collection provides a comprehensive set of requests for interacting with **Filament One**, a powerful admin panel framework built on Laravel. The collection includes endpoints for authentication, resource management, user permissions, and other core functionalities, making it easier to test and integrate Filament One into your applications.\n\n**Features:**\n\n✅ Pre-configured request examples for quick testing  \n✅ Environment variables for seamless API configuration  \n✅ Structured folders for easy navigation  \n✅ Ready-to-use authentication workflows\n\nUse this collection to streamline your API development process and efficiently manage your Filament One-based applications.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5428104"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@filamentone.com",
+									"description": "The email address of the user.",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"description": "The password for the user's account.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/api/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint allows users to log in by providing their email and password in the request body.\n\n**Request**\n\n- Form Data:\n    \n    - `email` (text): The email address of the user.\n        \n    - `password` (text): The password for the user's account.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\",\n  \"token\": \"string\"\n}\n\n ```\n\nThe response contains the `token` which is a string representing the authentication token."
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/auth/logout",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint is used to log out the authenticated user by revoking the access token.\n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"success\": \"boolean\",\n  \"message\": \"string\"\n}\n\n ```\n\nThe response will contain a \"success\" boolean indicating the status of the logout operation, and a \"message\" string which may provide additional information."
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/api/user",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "**API Request Description**\n\nThis endpoint is used to get the details of the authenticated user.\n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"id\": \"integer\",\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"email_verified_at\": \"timestamp\",\n  \"created_at\": \"timestamp\",\n  \"updated_at\": \"timestamp\",\n  \"deleted_at\": \"timestamp\",\n  \"user_profile\": {\n    \"id\": \"integer\",\n    \"user_id\": \"integer\",\n    \"phone\": \"string\",\n    \"birthdate\": \"date\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nThe response will contain a \"success\" boolean indicating the status of the logout operation, and a \"message\" string which may provide additional information."
+					},
+					"response": []
+				}
+			],
+			"description": "The **Authentication** folder contains essential API requests for managing user authentication in **Filament One**. This includes endpoints for user login, registration, and logout, enabling secure access control within your application.\n\n**Endpoints Included:**\n\n🔹 **Login** – Authenticate users and retrieve an access token.  \n🔹 **Register** – Create a new user account.  \n🔹 **Logout** – Revoke the user's access token and end the session.\n\nThese endpoints help ensure secure authentication and user session management in your Filament One-powered applications. 🚀"
+		},
+		{
+			"name": "CMS",
+			"item": [
+				{
+					"name": "Page Builder",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders?page=1&per_page=10",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "The page number for paginating the results."
+										},
+										{
+											"key": "per_page",
+											"value": "10",
+											"description": "The number of items to be included per page."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint retrieves a list of page builders with the option to paginate the results.\n\n**Request**\n\n- Query Parameters:\n    \n    - `page` (number, required): The page number for paginating the results.\n        \n    - `per_page` (number, required): The number of items to be included per page.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": [\n    {\n      \"id\": \"integer\",\n      \"title\": \"string\",\n      \"slug\": \"string\",\n      \"description\": \"string\",\n      \"is_active\": \"boolean\",\n      \"content\": \"string\",\n      \"custom_css\": \"string\",\n      \"custom_js\": \"string\",\n      \"meta\": {\n        \"author\": \"string\",\n        \"keywords\": \"string\",\n        \"description\": \"string\"\n      },\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"meta\": {\n    \"current_page\": \"integer\",\n    \"from\": \"integer\",\n    \"last_page\": \"integer\",\n    \"links\": [\n      {\n        \"url\": \"string\",\n        \"label\": \"string\",\n        \"active\": \"boolean\"\n      }\n    ],\n    \"path\": \"string\",\n    \"per_page\": \"integer\",\n    \"to\": \"integer\",\n    \"total\": \"integer\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the page builder object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint retrieves the details of a specific page builder identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the page builder object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "The title of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "",
+											"description": "The slug of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"description": "The description of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "",
+											"description": "Indicates whether the page builder is active.",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "",
+											"description": "The content of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "custom_css",
+											"value": "",
+											"description": "Custom CSS for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "custom_js",
+											"value": "",
+											"description": "Custom JavaScript for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "meta[author]",
+											"value": "",
+											"description": "The author metadata for the page builder",
+											"type": "text"
+										},
+										{
+											"key": "meta[keywords]",
+											"value": "",
+											"description": "The keywords metadata for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "meta[description]",
+											"value": "",
+											"description": "The description metadata for the page builder.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders"
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to add a new page builder.\n\n**Request**\n\n- Form Data:\n    \n    - `title` (text, required): The title of the page builder.\n        \n    - `slug` (text, required): The slug of the page builder.\n        \n    - `description` (text): The description of the page builder.\n        \n    - `is_active` (boolean, required): Indicates whether the page builder is active.\n        \n    - `content` (text): The content of the page builder.\n        \n    - `custom_css` (text): Custom CSS for the page builder.\n        \n    - `custom_js` (text): Custom JavaScript for the page builder.\n        \n    - `meta[author]` (text): The author metadata for the page builder.\n        \n    - `meta[keywords]` (text): The keywords metadata for the page builder.\n        \n    - `meta[description]` (text): The description metadata for the page builder.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\"\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "",
+											"description": "The title of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "",
+											"description": "The slug of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"description": "The description of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "",
+											"description": "Indicates whether the page builder is active.",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "",
+											"description": "The content of the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "custom_css",
+											"value": "",
+											"description": "Custom CSS for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "custom_js",
+											"value": "",
+											"description": "Custom JavaScript for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "meta[author]",
+											"value": "",
+											"description": "The author metadata for the page builder",
+											"type": "text"
+										},
+										{
+											"key": "meta[keywords]",
+											"value": "",
+											"description": "The keywords metadata for the page builder.",
+											"type": "text"
+										},
+										{
+											"key": "meta[description]",
+											"value": "",
+											"description": "The description metadata for the page builder.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders/:id?_method=PUT",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders",
+										":id"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the page builder object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to update a page builder object.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the page builder object.\n        \n- Form Data:\n    \n    - `title` (text, required): The title of the page builder.\n        \n    - `slug` (text, required): The slug of the page builder.\n        \n    - `description` (text): The description of the page builder.\n        \n    - `is_active` (boolean, required): Indicates whether the page builder is active.\n        \n    - `content` (text): The content of the page builder.\n        \n    - `custom_css` (text): Custom CSS for the page builder.\n        \n    - `custom_js` (text): Custom JavaScript for the page builder.\n        \n    - `meta[author]` (text): The author metadata for the page builder.\n        \n    - `meta[keywords]` (text): The keywords metadata for the page builder.\n        \n    - `meta[description]` (text): The description metadata for the page builder.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\"\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the page builder object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint deletes a specific page builder identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the page builder object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Deleted page builder object can be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Force Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders/:id/force-delete",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders",
+										":id",
+										"force-delete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the page builder object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint force deletes a specific page builder identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the page builder object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Force deleted page builder object cannot be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/page-builders/:id/restore",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"page-builders",
+										":id",
+										"restore"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the page builder object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint restores a deleted page builder identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the page builder object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"title\": \"string\",\n    \"slug\": \"string\",\n    \"description\": \"string\",\n    \"is_active\": \"boolean\",\n    \"content\": \"string\",\n    \"custom_css\": \"string\",\n    \"custom_js\": \"string\",\n    \"meta\": {\n      \"author\": \"string\",\n      \"keywords\": \"string\",\n      \"description\": \"string\"\n    },\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Only soft deleted page builder objects can be restored using the `Restore API`"
+							},
+							"response": []
+						}
+					],
+					"description": "The **Page Builder Module** folder contains API requests for managing the **Filament One Page Builder**, a powerful tool for creating and customizing dynamic pages. This module allows users to design pages with structured components, ensuring flexibility and ease of content management.\n\n**Endpoints Included:**\n\n🔹 **Create Block** – Add a new content block to a page.  \n🔹 **Update Block** – Modify the content and settings of an existing block.  \n🔹 **Delete Block** – Remove a content block from a page.  \n🔹 **Get Page Structure** – Retrieve the full structure and content of a page.\n\nThese endpoints provide complete control over the page-building process, making it easy to create and manage structured content within **Filament One**. 🚀"
+				}
+			],
+			"description": "The **CMS** folder contains API requests for managing content within **Filament One’s** Page Builder module. This module enables dynamic content creation and customization, allowing users to build and manage pages effortlessly.\n\n**Endpoints Included:**\n\n🔹 **Create Page** – Add a new page with customizable content.  \n🔹 **Update Page** – Modify existing page content and settings.  \n🔹 **Delete Page** – Remove a page from the CMS.  \n🔹 **Get Pages** – Retrieve a list of all created pages.\n\nUse these endpoints to integrate and manage your content efficiently within the Filament One ecosystem. 🚀"
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/users?page=1&per_page=10",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "The page number for paginating the results."
+										},
+										{
+											"key": "per_page",
+											"value": "10",
+											"description": "The number of items to be included per page."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint retrieves a list of users with the option to paginate the results.\n\n**Request**\n\n- Query Parameters:\n    \n    - `page` (number, required): The page number for paginating the results.\n        \n    - `per_page` (number, required): The number of items to be included per page.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": [\n    {\n      \"id\": \"integer\",\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"email_verified_at\": \"timestamp\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\",\n      \"user_profile\": {\n        \"id\": \"integer\",\n        \"user_id\": \"integer\",\n        \"phone\": \"string\",\n        \"birthdate\": \"date\",\n        \"created_at\": \"timestamp\",\n        \"updated_at\": \"timestamp\",\n        \"deleted_at\": \"timestamp\"\n      }\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"meta\": {\n    \"current_page\": \"integer\",\n    \"from\": \"integer\",\n    \"last_page\": \"integer\",\n    \"links\": [\n      {\n        \"url\": \"string\",\n        \"label\": \"string\",\n        \"active\": \"boolean\"\n      }\n    ],\n    \"path\": \"string\",\n    \"per_page\": \"integer\",\n    \"to\": \"integer\",\n    \"total\": \"integer\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/users/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the user object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint retrieves the details of a specific user identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the user object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"description": "The full name of the user.",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"description": "The email address of the user.",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"description": "The password of the user.",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "",
+											"description": "The password confirmation of the user.",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "",
+											"description": "The phone number of the user.",
+											"type": "text"
+										},
+										{
+											"key": "birthdate",
+											"value": "",
+											"description": "The birthdate of the user.",
+											"type": "text"
+										},
+										{
+											"key": "roles[]",
+											"value": "",
+											"description": "The roles of the user.",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"description": "The photo of the user.",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/users",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users"
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to add a new user.\n\n**Request**\n\n- Form Data:\n    \n    - `name` (text, required): The full name of the user.\n        \n    - `email` (text, required): The email address of the user.\n        \n    - `password` (text, required): The password of the user.\n        \n    - `password_confirmation` (text, required): The password confirmation of the user.\n        \n    - `phone` (text): The phone number of the user.\n        \n    - `birthdate` (date): The birthdate of the user.\n        \n    - `roles` (array): The roles of the user.\n        \n    - `avatar` (file): The photo of the user.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\"\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"description": "The full name of the user.",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "",
+											"description": "The email address of the user.",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"description": "The password of the user.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password_confirmation",
+											"value": "",
+											"description": "The password confirmation of the user.",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "phone",
+											"value": "",
+											"description": "The phone number of the user.",
+											"type": "text"
+										},
+										{
+											"key": "birthdate",
+											"value": "",
+											"description": "The birthdate of the user.",
+											"type": "text"
+										},
+										{
+											"key": "roles[]",
+											"value": "",
+											"description": "The roles of the user.",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"description": "The photo of the user.",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/users/:id?_method=PUT",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										":id"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the user object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to update a user object.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the user object.\n        \n- Form Data:\n    \n    - `name` (text, required): The full name of the user.\n        \n    - `email` (text, required): The email address of the user.\n        \n    - `password` (text): The password of the user.\n        \n    - `password_confirmation` (text): The password confirmation of the user.\n        \n    - `phone` (text): The phone number of the user.\n        \n    - `birthdate` (date): The birthdate of the user.\n        \n    - `roles` (array): The roles of the user.\n        \n    - `avatar` (file): The photo of the user.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/users/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the user object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint deletes a specific user identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the user object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```\n\nNote: Deleted user object can be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Force Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/users/:id/force-delete",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										":id",
+										"force-delete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the user object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint force deletes a specific user identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the user object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```\n\nNote: Force deleted user object cannot be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/users/:id/restore",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"users",
+										":id",
+										"restore"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the user object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint restores a deleted user identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the user object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"email_verified_at\": \"timestamp\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\",\n    \"user_profile\": {\n      \"id\": \"integer\",\n      \"user_id\": \"integer\",\n      \"phone\": \"string\",\n      \"birthdate\": \"date\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  }\n}\n\n ```\n\nNote: Only soft deleted user objects can be restored using the `Restore API`"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Settings",
+			"item": [
+				{
+					"name": "API Credentials",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations?page=1&per_page=10",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "The page number for paginating the results."
+										},
+										{
+											"key": "per_page",
+											"value": "10",
+											"description": "The number of items to be included per page."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint retrieves a list of api credentials with the option to paginate the results.\n\n**Request**\n\n- Query Parameters:\n    \n    - `page` (number, required): The page number for paginating the results.\n        \n    - `per_page` (number, required): The number of items to be included per page.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": [\n    {\n      \"id\": \"integer\",\n      \"name\": \"string\",\n      \"slug\": \"string\",\n      \"is_active\": \"boolean\",\n      \"keys\": \"array\",\n      \"created_at\": \"timestamp\",\n      \"updated_at\": \"timestamp\",\n      \"deleted_at\": \"timestamp\"\n    }\n  ],\n  \"links\": {\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\"\n  },\n  \"meta\": {\n    \"current_page\": \"integer\",\n    \"from\": \"integer\",\n    \"last_page\": \"integer\",\n    \"links\": [\n      {\n        \"url\": \"string\",\n        \"label\": \"string\",\n        \"active\": \"boolean\"\n      }\n    ],\n    \"path\": \"string\",\n    \"per_page\": \"integer\",\n    \"to\": \"integer\",\n    \"total\": \"integer\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Details",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the API object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint retrieves the details of a specific api credentials identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the api credentials object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"description": "The name of the api credentials.",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "",
+											"description": "The slug of the api credentials.",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "",
+											"description": "Indicates whether the api credentials is active.",
+											"type": "text"
+										},
+										{
+											"key": "keys",
+											"value": "",
+											"description": "The collection of keys, secrets or passwords of the api credentials.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations"
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to add api credentials.\n\n**Request**\n\n- Form Data:\n    \n    - `name` (text, required): The name of the api credentials.\n        \n    - `slug` (text, required): The slug of the api credentials.\n        \n    - `is_active` (boolean, required): Indicates whether the api credentials is active.\n        \n    - `keys` (array, required): The collection of keys, secrets or passwords of the api credentials.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\"\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "",
+											"description": "The name of the api credentials.",
+											"type": "text"
+										},
+										{
+											"key": "slug",
+											"value": "",
+											"description": "The slug of the api credentials.",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "",
+											"description": "Indicates whether the api credentials is active.",
+											"type": "text"
+										},
+										{
+											"key": "keys",
+											"value": "",
+											"description": "The collection of keys, secrets or passwords of the api credentials.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations/:id?_method=PUT",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations",
+										":id"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the api credentials object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThis endpoint allows the admin to update api credentials.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the api credentials object.\n        \n- Form Data:\n    \n    - `name` (text, required): The name of the api credentials.\n        \n    - `slug` (text, required): The slug of the api credentials.\n        \n    - `is_active` (boolean, required): Indicates whether the api credentials is active.\n        \n    - `keys` (array, required): The collection of keys, secrets or passwords of the api credentials.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\"\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations/:id",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the api credentials object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint deletes specific api credentials identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the api credentials object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Deleted api credentials object can be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Force Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations/:id/force-delete",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations",
+										":id",
+										"force-delete"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the api credentials object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint force deletes specific api credentials identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the api credentials object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Force deleted api credentials object cannot be restored using the `Restore API`"
+							},
+							"response": []
+						},
+						{
+							"name": "Restore",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{URL}}/api/admin/api-integrations/:id/restore",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"api-integrations",
+										":id",
+										"restore"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1",
+											"description": "The unique id of the api credentials object."
+										}
+									]
+								},
+								"description": "**API Request Description**\n\nThe endpoint restores a deleted api credentials identified by the provided ID.\n\n**Request**\n\n- Path Variables:\n    \n    - `:id` (number, required): The unique id of the api credentials object.\n        \n\n**Response**\n\nThe response for this request follows the JSON schema below:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"name\": \"string\",\n    \"slug\": \"string\",\n    \"is_active\": \"boolean\",\n    \"keys\": \"array\",\n    \"created_at\": \"timestamp\",\n    \"updated_at\": \"timestamp\",\n    \"deleted_at\": \"timestamp\"\n  }\n}\n\n ```\n\nNote: Only soft deleted api credentials can be restored using the `Restore API`"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
