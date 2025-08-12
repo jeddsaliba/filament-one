@@ -10,7 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
+use Filament\Notifications;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -164,14 +164,31 @@ class Messages extends Component implements HasForms
 
                 $this->form->fill();
 
-                $this->selectedConversation->updated_at = now();
+                $this->selectedConversation->update([
+                    'updated_at' => now(),
+                ]);
 
-                $this->selectedConversation->save();
+                $notificationTitle = __('New Message');
+                $notificationBody = __('sent you a message.');
+                if ($this->selectedConversation->otherUsers->count() > 1) {
+                    $notificationTitle = __('New Group Message');
+                    $notificationBody = __('sent a message to your group.');
+                }
+                Notifications\Notification::make()
+                    ->title($notificationTitle)
+                    ->body(Auth::user()->name . ' ' . $notificationBody)
+                    ->actions([
+                        Notifications\Actions\Action::make('view')
+                            ->label(__('View Message'))
+                            ->markAsRead()
+                            ->url(\App\Filament\Pages\Messages::getUrl(['id' => $this->selectedConversation->id])),
+                    ])
+                    ->sendToDatabase($this->selectedConversation->otherUsers);
 
                 $this->dispatch('refresh-inbox');
             });
         } catch (\Exception $exception) {
-            Notification::make()
+            Notifications\Notification::make()
                 ->title(__('Something went wrong'))
                 ->body($exception->getMessage())
                 ->danger()

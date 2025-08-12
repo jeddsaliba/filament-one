@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2025-08-12
+### Added
+- **Message Notifications:** When sending a message to a person or group, they will receive a notification badge and ability to redirect to the conversation if the notification is clicked.
+
+---
+
 ## [1.4.0] - 2025-03-17
 ### Added
 - **API Support:** Introduced a new API layer that enables seamless integration with external applications. This includes authentication, data retrieval, and CRUD operations via RESTful endpoints.
