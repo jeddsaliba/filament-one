@@ -12,10 +12,11 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use YMigVal\LaravelModelCache\HasCachedQueries;
 
 class Message extends Model implements HasMedia
 {
-    use HasActivityLogs, HasFactory, HasMediaConvertionRegistrations, SoftDeletes;
+    use HasActivityLogs, HasCachedQueries, HasFactory, HasMediaConvertionRegistrations, SoftDeletes;
 
     protected $table = 'fm_messages';
 

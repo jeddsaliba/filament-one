@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Parallax\FilamentComments\Models\Traits\HasFilamentComments;
+use YMigVal\LaravelModelCache\HasCachedQueries;
 
 class PageBuilder extends Model
 {
-    use HasActivityLogs, HasFactory, HasFilamentComments, SoftDeletes;
+    use HasActivityLogs, HasCachedQueries, HasFactory, HasFilamentComments, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.

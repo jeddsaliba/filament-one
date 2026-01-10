@@ -27,6 +27,7 @@
         "rupadana/filament-api-service": "^3.4",
         "shuvroroy/filament-spatie-laravel-health": "^2.3",
         "stechstudio/filament-impersonate": "^3.15",
+        "ymigval/laravel-model-cache": "^1.1",
         "ysfkaya/filament-phone-input": "^3.1"
     },
     "require-dev": {
@@ -37,7 +38,8 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
-        "phpunit/phpunit": "^11.0.1"
+        "phpunit/phpunit": "^11.0.1",
+        "predis/predis": "^3.3"
     },
     "autoload": {
         "psr-4": {

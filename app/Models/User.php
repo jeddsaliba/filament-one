@@ -23,11 +23,12 @@ use Parallax\FilamentComments\Models\Traits\HasFilamentComments;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
+use YMigVal\LaravelModelCache\HasCachedQueries;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasActivityLogs, HasApiTokens, HasFactory, HasFilamentComments, HasMessages, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
+    use HasActivityLogs, HasApiTokens, HasCachedQueries, HasFactory, HasFilamentComments, HasMessages, HasMediaConvertionRegistrations, HasPanelShield, HasRoles, Notifiable, SoftDeletes, TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.

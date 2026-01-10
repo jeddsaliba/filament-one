@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use YMigVal\LaravelModelCache\HasCachedQueries;
 
 class Inbox extends Model
 {
-    use HasActivityLogs, HasFactory, SoftDeletes;
+    use HasActivityLogs, HasCachedQueries, HasFactory, SoftDeletes;
 
     protected $table = 'fm_inboxes';
 

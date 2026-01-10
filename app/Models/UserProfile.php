@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use YMigVal\LaravelModelCache\HasCachedQueries;
 
 class UserProfile extends Model
 {
-    use HasActivityLogs, HasFactory, SoftDeletes;
+    use HasActivityLogs, HasCachedQueries, HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
