@@ -1,73 +1,57 @@
 services:
-    # PHP-FPM
     app:
         build:
             context: .
             dockerfile: docker/php/Dockerfile
-        restart: unless-stopped
-        working_dir: /var/www/html
-        environment:
-            APP_ENV: development
-            DB_CONNECTION: mysql
-            DB_HOST: mysql
-            DB_PORT: 3306
-            DB_DATABASE: "${DB_DATABASE}"
-            DB_USERNAME: "${DB_USERNAME}"
-            DB_PASSWORD: "${DB_PASSWORD}"
-            REDIS_HOST: redis
-            REDIS_PASSWORD: null
-            REDIS_PORT: 6379
+        container_name: filament_app
+        working_dir: /var/www
         volumes:
-            - ./:/var/www/html # Dev: mount code for hot reload
-        env_file:
-            - ./.env
+            - .:/var/www
         depends_on:
             - mysql
             - redis
         networks:
-            - laravel
+            - filament
 
-    # Nginx
     nginx:
         image: nginx:alpine
-        restart: unless-stopped
+        container_name: filament_nginx
         ports:
             - "80:80"
         volumes:
-            - ./:/var/www/html
-            - ./docker/nginx:/etc/nginx/conf.d
+            - .:/var/www
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
         depends_on:
             - app
         networks:
-            - laravel
+            - filament
 
-    # MySQL
     mysql:
         image: mysql:8.0
+        container_name: filament_mysql
         restart: unless-stopped
-        environment:
-            MYSQL_DATABASE: "${DB_DATABASE}"
-            MYSQL_USER: "${DB_USERNAME}"
-            MYSQL_PASSWORD: "${DB_PASSWORD}"
-            MYSQL_ROOT_PASSWORD: root
         ports:
             - "3306:3306"
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
         volumes:
             - mysql_data:/var/lib/mysql
         networks:
-            - laravel
+            - filament
 
-    # Redis
     redis:
-        image: redis:7-alpine
-        restart: unless-stopped
+        image: redis:alpine
+        container_name: filament_redis
         ports:
             - "6379:6379"
         networks:
-            - laravel
+            - filament
 
 networks:
-    laravel:
+    filament:
 
 volumes:
     mysql_data:

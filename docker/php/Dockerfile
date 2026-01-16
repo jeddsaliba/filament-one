@@ -1,33 +1,40 @@
-# Base PHP-FPM
 FROM php:8.3-fpm
 
-# Install system dependencies
+# System dependencies
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libpng-dev libjpeg-dev libfreetype6-dev \
-    libzip-dev libicu-dev libonig-dev libxml2-dev default-mysql-client \
-    redis-tools supervisor cron \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl intl gd bcmath
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    libzip-dev \
+    && docker-php-ext-install \
+        pdo_mysql \
+        mbstring \
+        exif \
+        pcntl \
+        bcmath \
+        gd \
+        zip
 
-# Install Redis PHP extension
+# Redis extension
 RUN pecl install redis && docker-php-ext-enable redis
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /var/www/html
+WORKDIR /var/www
 
-# Copy Laravel app (used for production builds)
-# For dev, code is mounted as volume
+# Copy existing app
 COPY . .
 
-# Install composer dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
-# Copy entrypoint script
-COPY docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+USER www-data
 
-# Entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
+EXPOSE 9000
