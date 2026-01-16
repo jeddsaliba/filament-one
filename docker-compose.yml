@@ -50,6 +50,22 @@ services:
         networks:
             - filament
 
+    queue:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: filament_queue
+        working_dir: /var/www
+        command: php artisan queue:work --sleep=3 --tries=3 --timeout=90
+        volumes:
+            - .:/var/www
+        depends_on:
+            - app
+            - redis
+            - mysql
+        networks:
+            - filament
+
 networks:
     filament:
 
