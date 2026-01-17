@@ -173,14 +173,6 @@ Or for development with hot reload:
 npm run dev
 ```
 
-### Step 8: Set Storage Permissions
-
-Ensure storage directories are writable:
-
-```bash
-chmod -R 775 storage bootstrap/cache
-```
-
 ### Next Steps
 
 After completing the setup above, proceed to:
@@ -241,9 +233,9 @@ APP_TIMEZONE=UTC
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=filament_one
-DB_USERNAME=laravel
-DB_PASSWORD=password
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
 # Redis Configuration
 # ⚠️ REDIS_HOST must be 'redis' (Docker service name, not localhost!)
@@ -295,138 +287,11 @@ docker-compose ps
 
 All services should show as "Up" or "running".
 
-### Step 4: Install Dependencies
-
-```bash
-# Install Composer dependencies
-docker-compose exec app composer install
-
-# Install npm dependencies (if building assets in container)
-docker-compose exec app npm install
-```
-
-### Step 5: Generate Application Key
+### Step 4: Generate Application Key
 
 ```bash
 docker-compose exec app php artisan key:generate
 ```
-
-### Step 6: Run Database Migrations
-
-The database is automatically created when the MySQL container starts. Run migrations:
-
-```bash
-docker-compose exec app php artisan migrate
-```
-
-### Step 7: Build Frontend Assets (Optional)
-
-If you want to build assets inside the container:
-
-```bash
-docker-compose exec app npm run build
-```
-
-**Note:** For development with hot reload, you can run `npm run dev` on your host machine instead.
-
-### Step 8: Access Your Application
-
-Open your browser and navigate to:
-
-```
-http://localhost
-```
-
-### Common Docker Commands
-
-**View container status:**
-```bash
-docker-compose ps
-```
-
-**View logs:**
-```bash
-# All services
-docker-compose logs -f
-
-# Specific service
-docker-compose logs -f app
-docker-compose logs -f nginx
-docker-compose logs -f queue
-docker-compose logs -f mysql
-docker-compose logs -f redis
-```
-
-**Execute Artisan commands:**
-```bash
-docker-compose exec app php artisan [command]
-# Examples:
-docker-compose exec app php artisan migrate
-docker-compose exec app php artisan db:seed
-docker-compose exec app php artisan cache:clear
-```
-
-**Execute Composer commands:**
-```bash
-docker-compose exec app composer [command]
-# Examples:
-docker-compose exec app composer install
-docker-compose exec app composer update
-docker-compose exec app composer require [package]
-```
-
-**Access container shell:**
-```bash
-docker-compose exec app sh
-```
-
-**Stop containers:**
-```bash
-docker-compose down
-```
-
-**Stop and remove volumes (⚠️ deletes database data):**
-```bash
-docker-compose down -v
-```
-
-**Rebuild containers:**
-```bash
-docker-compose down
-docker-compose build --no-cache
-docker-compose up -d
-```
-
-**Restart a specific service:**
-```bash
-docker-compose restart app
-docker-compose restart queue
-```
-
-### Database Access
-
-**From host machine:**
-- Host: `127.0.0.1` or `localhost`
-- Port: `3306`
-- Database: Value from `DB_DATABASE` in `.env`
-- Username: Value from `DB_USERNAME` in `.env`
-- Password: Value from `DB_PASSWORD` in `.env`
-
-**From within containers:**
-- Host: `mysql`
-- Port: `3306`
-- Use the same credentials
-
-### Redis Access
-
-**From host machine:**
-- Host: `127.0.0.1` or `localhost`
-- Port: `6379`
-- No password (unless configured)
-
-**From within containers:**
-- Host: `redis`
-- Port: `6379`
 
 ### Next Steps
 
