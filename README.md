@@ -268,11 +268,6 @@ docker-compose build
 docker-compose up -d
 ```
 
-**Verify containers are running:**
-```bash
-docker-compose ps
-```
-
 All services should show as "Up" or "running".
 
 ### Step 4: Generate Application Key
@@ -421,35 +416,6 @@ Or rebuild the assets in the container:
 ```bash
 docker-compose exec app sh -c "npm install && npm run build"
 ```
-
-### Docker-specific Issues
-
-**1. Connection refused to database:**
-- Verify `DB_HOST=mysql` in your `.env` (must be the Docker service name)
-- Check if MySQL container is running: `docker-compose ps mysql`
-- Ensure database credentials match `docker-compose.yml`
-
-**2. Connection refused to Redis:**
-- Verify `REDIS_HOST=redis` in your `.env` (must be the Docker service name)
-- Check if Redis container is running: `docker-compose ps redis`
-
-**3. Queue jobs not processing:**
-- Ensure `QUEUE_CONNECTION=redis` in your `.env`
-- Check queue worker logs: `docker-compose logs -f queue`
-- Verify Redis container is running
-
-**4. Permission issues:**
-- Fix storage permissions: `docker-compose exec app chmod -R 775 storage bootstrap/cache`
-- Fix ownership: `docker-compose exec app chown -R www-data:www-data storage bootstrap/cache`
-
-**5. Container won't start:**
-- Rebuild containers: `docker-compose down && docker-compose build --no-cache && docker-compose up -d`
-- Check logs: `docker-compose logs [service-name]`
-- Verify Docker is running: `docker ps`
-
-**6. Port already in use:**
-- Stop other services using ports 80, 3306, or 6379
-- Or modify port mappings in `docker-compose.yml`
 
 <a name="plugins-used"></a>
 ## Plugins Used
