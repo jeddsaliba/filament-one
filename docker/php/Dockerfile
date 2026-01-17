@@ -36,16 +36,9 @@ RUN pecl install redis \
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy entrypoint script
-COPY docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
 # Copy application files
 COPY . .
 
 # Permissions
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 storage bootstrap/cache
-
-# Set entrypoint
-ENTRYPOINT ["docker-entrypoint.sh"]
