@@ -30,8 +30,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 - **Open & Customizable:** Modify and extend the boilerplate according to your project’s requirements.
 
 ## Table of Contents
-[Getting Started](#getting-started)<br/>
-[Setup Local Environment](#environment)<br/>
+[Setup Local Environment](#local-setup)<br/>
 [Setup with Docker](#docker-setup)<br/>
 [Database](#database)<br/>
 [Generate Filament Shield Permissions](#generate-filament-shield-permissions)<br/>
@@ -44,22 +43,7 @@ Built using **FilamentPHP**, it leverages modern PHP development practices to en
 [Acknowledgments](#acknowledgments)<br/>
 [Support](#support)
 
-<a name="getting-started"></a>
-## Getting Started
-Create a new project using this command:
-
-```bash
-composer create-project jeddsaliba/filament-one
-```
-
-Install the `dependencies` by running the following commands:
-
-```bash
-composer install
-npm install
-```
-
-<a name="environment"></a>
+<a name="local-setup"></a>
 ## Setup Local Environment
 
 This section covers setting up Filament One for local development without Docker.
@@ -72,11 +56,14 @@ This section covers setting up Filament One for local development without Docker
 - MySQL 8.0+ or PostgreSQL 13+
 - Redis (optional, for caching and queues)
 
-### Step 1: Create Environment File
-
-Generate a new `.env` file by running:
+### Step 1: Create Project and Environment File
 
 ```bash
+# Create project
+composer create-project jeddsaliba/filament-one
+cd filament-one
+
+# Create environment file
 cp .env.example .env
 ```
 
