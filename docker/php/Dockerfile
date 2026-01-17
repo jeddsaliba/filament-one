@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     libzip-dev \
     libicu-dev \
-    ca-certificates \
-    gnupg \
     && docker-php-ext-install \
         pdo \
         pdo_mysql \
@@ -27,11 +25,9 @@ RUN apt-get update && apt-get install -y \
         zip \
         intl
 
-# Install Node.js and npm (LTS version)
+# Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y nodejs
 
 # Install Redis extension
 RUN pecl install redis \
