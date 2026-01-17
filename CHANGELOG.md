@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.5.0] - 2026-01-27
+## [1.5.0] - 2026-01-17
 ### Added
 - **Docker Support:** Full Docker containerization for easy local development and deployment.
   - Complete Docker Compose setup with PHP 8.3-FPM, Nginx, MySQL 8.0, Redis, and Laravel queue worker
