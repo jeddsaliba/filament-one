@@ -179,6 +179,7 @@ After completing the setup above, proceed to:
 - [Database Migrations](#database)
 - [Generate Filament Shield Permissions](#generate-filament-shield-permissions)
 - [Create Administrator Account](#create-admin-account)
+- [Generate Test Data](#generate-test-data)
 
 <a name="docker-setup"></a>
 ## Setup with Docker
@@ -296,6 +297,7 @@ docker-compose exec app php artisan key:generate
 ### Next Steps
 
 After completing the Docker setup:
+- [Database Migrations](#database)
 - [Generate Filament Shield Permissions](#generate-filament-shield-permissions)
 - [Create Administrator Account](#create-admin-account)
 - [Generate Test Data](#generate-test-data)
