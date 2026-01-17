@@ -61,157 +61,333 @@ npm install
 
 <a name="environment"></a>
 ## Setup Local Environment
+
+This section covers setting up Filament One for local development without Docker.
+
+### Prerequisites
+
+- PHP 8.2 or higher
+- Composer
+- Node.js 18+ and npm
+- MySQL 8.0+ or PostgreSQL 13+
+- Redis (optional, for caching and queues)
+
+### Step 1: Create Environment File
+
 Generate a new `.env` file by running:
 
 ```bash
 cp .env.example .env
 ```
 
-Configure the `APP_URL` in your `.env` file:
+### Step 2: Generate Application Key
 
 ```bash
-APP_URL=http://localhost
+php artisan key:generate
 ```
 
-Configure the `MySQL` connection in your `.env` file:
+### Step 3: Configure Application Settings
+
+Update the following in your `.env` file:
+
+**Application URL:**
+```env
+APP_NAME="Filament One"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+APP_TIMEZONE=UTC
 ```
+
+### Step 4: Configure Database
+
+**For MySQL:**
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 ```
 
-or if you're using `PostgreSQL`:
-```
+**For PostgreSQL:**
+```env
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 ```
 
-Configure the `Mailer` in your `.env` file:
+**Important:** Make sure you've created the database before running migrations.
+
+### Step 5: Configure Redis (Optional but Recommended)
+
+If you have Redis installed locally:
+
+```env
+REDIS_CLIENT=phpredis
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_PASSWORD=null
+REDIS_DB=0
+REDIS_CACHE_DB=1
+
+# Use Redis for cache and sessions
+CACHE_STORE=redis
+SESSION_DRIVER=redis
+QUEUE_CONNECTION=redis
 ```
+
+### Step 6: Configure Mailer
+
+Update mail settings in your `.env` file:
+
+```env
 MAIL_MAILER=smtp
-MAIL_SCHEME=
-MAIL_HOST=
+MAIL_HOST=127.0.0.1
 MAIL_PORT=2525
-MAIL_USERNAME=
-MAIL_PASSWORD=
-MAIL_FROM_ADDRESS=
-MAIL_FROM_NAME=
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="noreply@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
+
+**Note:** For local development, you can use [Mailpit](https://github.com/axllent/mailpit) or [MailHog](https://github.com/mailhog/MailHog) for testing emails.
+
+### Step 7: Build Frontend Assets
+
+Install npm dependencies and build assets:
+
+```bash
+npm install
+npm run build
+```
+
+Or for development with hot reload:
+
+```bash
+npm run dev
+```
+
+### Step 8: Set Storage Permissions
+
+Ensure storage directories are writable:
+
+```bash
+chmod -R 775 storage bootstrap/cache
+```
+
+### Next Steps
+
+After completing the setup above, proceed to:
+- [Database Migrations](#database)
+- [Generate Filament Shield Permissions](#generate-filament-shield-permissions)
+- [Create Administrator Account](#create-admin-account)
 
 <a name="docker-setup"></a>
 ## Setup with Docker
 
-Filament One includes Docker configuration for easy local development. This setup includes PHP-FPM, Nginx, MySQL, Redis, and a queue worker.
+Filament One includes Docker configuration for easy local development. This setup includes PHP-FPM, Nginx, MySQL, Redis, and a queue worker - everything you need to get started quickly.
 
 ### Prerequisites
-- [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/) installed
 
-### Quick Start
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed (includes Docker and Docker Compose)
+- At least 4GB of available RAM
+- Ports 80, 3306, and 6379 available
 
-1. **Clone/Create the project:**
-   ```bash
-   composer create-project jeddsaliba/filament-one
-   cd filament-one
-   ```
+### Docker Services Included
 
-2. **Create your `.env` file:**
-   ```bash
-   cp .env.example .env
-   ```
+The Docker setup provides the following services:
 
-3. **Configure Docker-specific settings in `.env`:**
-   
-   **⚠️ Critical Docker Configuration:**
-   ```env
-   # Database - MUST use 'mysql' as host (Docker service name)
-   DB_CONNECTION=mysql
-   DB_HOST=mysql              # ⚠️ Must be 'mysql', not '127.0.0.1'
-   DB_PORT=3306
-   DB_DATABASE=filament_one   # Match this with docker-compose.yml
-   DB_USERNAME=laravel        # Match this with docker-compose.yml
-   DB_PASSWORD=password       # Match this with docker-compose.yml
+| Service | Description | Port |
+|---------|-------------|------|
+| **app** | PHP 8.3-FPM application server | Internal |
+| **nginx** | Nginx web server | 80 |
+| **mysql** | MySQL 8.0 database | 3306 |
+| **redis** | Redis cache and queue | 6379 |
+| **queue** | Laravel queue worker | Internal |
 
-   # Redis - MUST use 'redis' as host (Docker service name)
-   REDIS_HOST=redis           # ⚠️ Must be 'redis', not '127.0.0.1'
-   REDIS_PORT=6379
-   REDIS_PASSWORD=null
+### Step 1: Create Project and Environment File
 
-   # Queue
-   QUEUE_CONNECTION=redis
-   ```
+```bash
+# Create project
+composer create-project jeddsaliba/filament-one
+cd filament-one
 
-   **📋 See [DOCKER_ENV_CHECKLIST.md](DOCKER_ENV_CHECKLIST.md) for complete Docker environment configuration guide.**
+# Create environment file
+cp .env.example .env
+```
 
-4. **Build and start containers:**
-   ```bash
-   docker-compose build
-   docker-compose up -d
-   ```
+### Step 2: Configure Docker-Specific Environment Variables
 
-5. **Install Composer dependencies:**
-   ```bash
-   docker-compose exec app composer install
-   ```
+**⚠️ Critical:** Docker services communicate using service names as hostnames. Your `.env` file must use these service names.
 
-6. **Generate application key:**
-   ```bash
-   docker-compose exec app php artisan key:generate
-   ```
+Update your `.env` file with the following Docker-specific configuration:
 
-7. **Run database migrations:**
-   ```bash
-   docker-compose exec app php artisan migrate
-   ```
+```env
+# Application Settings
+APP_NAME="Filament One"
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://localhost
+APP_TIMEZONE=UTC
 
-8. **Access your application:**
-   Open your browser and navigate to: `http://localhost`
+# Database Configuration
+# ⚠️ DB_HOST must be 'mysql' (Docker service name, not localhost!)
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=filament_one
+DB_USERNAME=laravel
+DB_PASSWORD=password
 
-### Docker Services
+# Redis Configuration
+# ⚠️ REDIS_HOST must be 'redis' (Docker service name, not localhost!)
+REDIS_CLIENT=phpredis
+REDIS_HOST=redis
+REDIS_PORT=6379
+REDIS_PASSWORD=null
+REDIS_DB=0
+REDIS_CACHE_DB=1
 
-The Docker setup includes the following services:
+# Cache & Session (using Redis)
+CACHE_STORE=redis
+SESSION_DRIVER=redis
+SESSION_LIFETIME=120
 
-- **app** - PHP 8.3-FPM application server
-- **nginx** - Web server (port 80)
-- **mysql** - MySQL 8.0 database (port 3306)
-- **redis** - Redis cache and queue (port 6379)
-- **queue** - Laravel queue worker
+# Queue Configuration
+QUEUE_CONNECTION=redis
 
-### Useful Docker Commands
+# Mail Configuration (optional)
+MAIL_MAILER=smtp
+MAIL_HOST=127.0.0.1
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="noreply@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
 
-**View running containers:**
+**Important Notes:**
+- `DB_HOST=mysql` - Must use the Docker service name, not `127.0.0.1` or `localhost`
+- `REDIS_HOST=redis` - Must use the Docker service name, not `127.0.0.1` or `localhost`
+- Database credentials (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) are used by both Laravel and the MySQL container initialization
+
+### Step 3: Build and Start Docker Containers
+
+```bash
+# Build the containers
+docker-compose build
+
+# Start all services in detached mode
+docker-compose up -d
+```
+
+**Verify containers are running:**
+```bash
+docker-compose ps
+```
+
+All services should show as "Up" or "running".
+
+### Step 4: Install Dependencies
+
+```bash
+# Install Composer dependencies
+docker-compose exec app composer install
+
+# Install npm dependencies (if building assets in container)
+docker-compose exec app npm install
+```
+
+### Step 5: Generate Application Key
+
+```bash
+docker-compose exec app php artisan key:generate
+```
+
+### Step 6: Run Database Migrations
+
+The database is automatically created when the MySQL container starts. Run migrations:
+
+```bash
+docker-compose exec app php artisan migrate
+```
+
+### Step 7: Build Frontend Assets (Optional)
+
+If you want to build assets inside the container:
+
+```bash
+docker-compose exec app npm run build
+```
+
+**Note:** For development with hot reload, you can run `npm run dev` on your host machine instead.
+
+### Step 8: Access Your Application
+
+Open your browser and navigate to:
+
+```
+http://localhost
+```
+
+### Common Docker Commands
+
+**View container status:**
 ```bash
 docker-compose ps
 ```
 
 **View logs:**
 ```bash
+# All services
+docker-compose logs -f
+
+# Specific service
 docker-compose logs -f app
 docker-compose logs -f nginx
 docker-compose logs -f queue
+docker-compose logs -f mysql
+docker-compose logs -f redis
 ```
 
-**Execute commands in containers:**
+**Execute Artisan commands:**
 ```bash
-# PHP/Artisan commands
 docker-compose exec app php artisan [command]
+# Examples:
+docker-compose exec app php artisan migrate
+docker-compose exec app php artisan db:seed
+docker-compose exec app php artisan cache:clear
+```
 
-# Composer commands
+**Execute Composer commands:**
+```bash
 docker-compose exec app composer [command]
+# Examples:
+docker-compose exec app composer install
+docker-compose exec app composer update
+docker-compose exec app composer require [package]
+```
 
-# Access container shell
+**Access container shell:**
+```bash
 docker-compose exec app sh
 ```
 
 **Stop containers:**
 ```bash
 docker-compose down
+```
+
+**Stop and remove volumes (⚠️ deletes database data):**
+```bash
+docker-compose down -v
 ```
 
 **Rebuild containers:**
@@ -221,15 +397,47 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
-### Environment Variables for Docker
+**Restart a specific service:**
+```bash
+docker-compose restart app
+docker-compose restart queue
+```
 
-Your `.env` file must match the Docker service names:
-- `DB_HOST=mysql` (not `localhost` or `127.0.0.1`)
-- `REDIS_HOST=redis` (not `localhost` or `127.0.0.1`)
+### Database Access
 
-Database credentials (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) must match the values used in `docker-compose.yml` for the MySQL service.
+**From host machine:**
+- Host: `127.0.0.1` or `localhost`
+- Port: `3306`
+- Database: Value from `DB_DATABASE` in `.env`
+- Username: Value from `DB_USERNAME` in `.env`
+- Password: Value from `DB_PASSWORD` in `.env`
 
-For detailed Docker environment configuration, see [DOCKER_ENV_CHECKLIST.md](DOCKER_ENV_CHECKLIST.md).
+**From within containers:**
+- Host: `mysql`
+- Port: `3306`
+- Use the same credentials
+
+### Redis Access
+
+**From host machine:**
+- Host: `127.0.0.1` or `localhost`
+- Port: `6379`
+- No password (unless configured)
+
+**From within containers:**
+- Host: `redis`
+- Port: `6379`
+
+### Next Steps
+
+After completing the Docker setup:
+- [Generate Filament Shield Permissions](#generate-filament-shield-permissions)
+- [Create Administrator Account](#create-admin-account)
+- [Generate Test Data](#generate-test-data)
+
+### Troubleshooting Docker Setup
+
+If you encounter issues, see the [Troubleshooting](#troubleshooting) section below.
 
 <a name="database"></a>
 ## Database
@@ -383,8 +591,11 @@ docker-compose exec app sh -c "npm install && npm run build"
 **5. Container won't start:**
 - Rebuild containers: `docker-compose down && docker-compose build --no-cache && docker-compose up -d`
 - Check logs: `docker-compose logs [service-name]`
+- Verify Docker is running: `docker ps`
 
-For more Docker troubleshooting, see [DOCKER_ENV_CHECKLIST.md](DOCKER_ENV_CHECKLIST.md).
+**6. Port already in use:**
+- Stop other services using ports 80, 3306, or 6379
+- Or modify port mappings in `docker-compose.yml`
 
 <a name="plugins-used"></a>
 ## Plugins Used
