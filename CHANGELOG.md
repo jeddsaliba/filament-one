@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-01-27
+### Added
+- **Docker Support:** Full Docker containerization for easy local development and deployment.
+  - Complete Docker Compose setup with PHP 8.3-FPM, Nginx, MySQL 8.0, Redis, and Laravel queue worker
+  - Dockerfile with optimized PHP extensions and Composer installation
+  - Automated container orchestration for all required services
+  - Comprehensive Docker documentation and setup guides in README
+  - Environment configuration guide for Docker-specific settings
+  - Quick start commands for building and running the entire stack
+
+---
+
 ## [1.4.1] - 2025-08-12
 ### Added
 - **Message Notifications:** When sending a message to a person or group, they will receive a notification badge and ability to redirect to the conversation if the notification is clicked.
